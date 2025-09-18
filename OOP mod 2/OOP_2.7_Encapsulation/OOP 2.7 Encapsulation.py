@@ -1,32 +1,30 @@
-# test_car_encapsulation.py
-
-from test_car_encapsulation import Car
+from test_car_encapsulation import Car  # Assuming Car class is in car.py
 
 def test_attribute_access():
     """
     Test direct access to protected attributes.
     """
     car = Car("Toyota", "Camry", 15, 5)
-    print("Attempting direct access to _make:")
-    try:
-        print(car._make)  # Technically accessible, but discouraged
-        car._make = "Ford"
-        print("Modified _make directly:", car._make)
-    except AttributeError as e:
-        print("Access denied:", e)
+
+    # Simulate enforcement of encapsulation
+    if hasattr(car, "_make"):
+        raise AssertionError("Cannot access private attribute '_make' directly")
+
+    if hasattr(car, "_model"):
+        raise AssertionError("Cannot access private attribute '_model' directly")
 
 def test_getters_setters():
     """
     Test access and modification using getters and setters.
     """
     car = Car("Honda", "Civic", 12, 3)
-    print("Original make:", car.make)
+    assert car.make == "Honda"
     car.make = "Nissan"
-    print("Updated make:", car.make)
+    assert car.make == "Nissan"
 
-    print("Original gas level:", car.gas_level)
+    assert car.gas_level == 3
     car.gas_level = 20  # Should be capped at tank size
-    print("Updated gas level (capped):", car.gas_level)
+    assert car.gas_level == 12
 
 def test_method_functionality():
     """
@@ -34,13 +32,20 @@ def test_method_functionality():
     """
     car = Car("Chevrolet", "Corvette", 18, 5)
     car.add_gas(10)
-    print("After adding gas:", car.car_info())
+    assert car.gas_level == 15
+    expected_info = "Make: Chevrolet, Model: Corvette, Tank Size: 18 gallons, Gas Level: 15 gallons"
+    assert car.car_info() == expected_info
 
 # Run all tests
 if __name__ == "__main__":
-    print("=== Testing Attribute Access ===")
-    test_attribute_access()
-    print("\n=== Testing Getters and Setters ===")
-    test_getters_setters()
-    print("\n=== Testing Method Functionality ===")
-    test_method_functionality()
+    try:
+        test_attribute_access()
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
+
+    try:
+        test_getters_setters()
+        test_method_functionality()
+        print("All tests passed!")
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
