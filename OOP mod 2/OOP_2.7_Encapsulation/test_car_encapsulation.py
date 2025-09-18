@@ -1,3 +1,5 @@
+# car.py
+
 class Car:
     def __init__(self, make, model, tank_size, gas_level):
         self._make = make
@@ -48,8 +50,7 @@ class Car:
 
     def car_info(self):
         return f"Make: {self._make}, Model: {self._model}, Tank Size: {self._tank_size} gallons, Gas Level: {self._gas_level} gallons"
+    
 
-# Instantiating the Car class
-my_car = Car("Chevrolet", "Corvette", 18, 5)
-my_car.add_gas(10)
-print(my_car.car_info())  # Output: Make: Chevrolet, Model: Corvette, Tank Size: 18 gallons, Gas Level: 15 gallons
+    if __name__ == "__main__":
+        pass
