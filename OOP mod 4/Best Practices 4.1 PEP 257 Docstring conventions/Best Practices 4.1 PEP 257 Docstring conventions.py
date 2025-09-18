@@ -101,6 +101,7 @@ def main():
 
     # TODO: Add support for exponentiation and modulus operations
     # TODO: Implement a command-line interface for user input
+    # TODO: Make print docstring callable from this module and not automatic
 
 if __name__ == "__main__":
     main()
@@ -117,3 +118,4 @@ if __name__ == "__main__":
 
     print("\nUsing help() on Calculator:")
     help(Calculator)
+
