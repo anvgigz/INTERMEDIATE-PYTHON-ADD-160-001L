@@ -1,0 +1,230 @@
+In this lesson, we will explore the concepts of composition and inheritance in Python, their differences, and when to use each approach. By the end of this lesson, students will be able to understand and implement composition and inheritance in their code.
+
+Objective
+At the end of this lesson, students will be able to:
+
+Understand the differences between composition and inheritance
+Implement composition and inheritance in Python
+Compare and contrast the benefits and drawbacks of each approach
+Use both composition and inheritance together in a single program
+ 
+
+Required Resources for this Assignment:
+OOP 2.8: Composition vs. Inheritance - two ways to the same destinationLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Advanced Design Patterns: Design Principles - Favor composition over inheritanceLinks to an external site.
+
+ 
+
+Inheritance
+
+
+Inheritance allows a class to inherit attributes and methods from another class. This creates a tightly coupled relationship. For example, a German Shepherd is a type of dog. Here is a sample code demonstrating inheritance:
+
+
+# Example of inheritance
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def bark(self):
+        return "Woof!"
+
+class GermanShepherd(Dog):
+    def guard(self):
+        return "I am guarding the house!"
+
+# Sample implementation
+dog = GermanShepherd("Rex")
+print(dog.bark())  # Output: Woof!
+print(dog.guard())  # Output: I am guarding the house!
+While inheritance is powerful, using multiple inheritance can make the code confusing and difficult to debug.
+
+Composition
+
+
+Composition, on the other hand, uses a "has a" relationship. It involves a class containing objects of other classes, making it a loosely coupled approach. Here is an example demonstrating composition:
+
+
+# Example of composition
+class Drinks:
+    def __init__(self, quantity):
+        self.quantity = quantity
+        self.service_fee = 1.0
+
+    def calculate_cost(self):
+        return self.quantity * self.service_fee
+
+class Food:
+    def __init__(self, total_cost, split_plate=False):
+        self.total_cost = total_cost
+        self.split_plate = split_plate
+        self.split_plate_fee = 3.0
+
+    def calculate_cost(self):
+        if self.split_plate:
+            return self.total_cost + self.split_plate_fee
+        return self.total_cost
+
+class Tip:
+    def __init__(self, total_cost):
+        self.total_cost = total_cost
+
+    def calculate_tip(self, percentage):
+        return self.total_cost * (percentage / 100)
+
+class Bill:
+    def __init__(self, drinks, food, tip_percentage):
+        self.drinks = drinks
+        self.food = food
+        self.tip_percentage = tip_percentage
+
+    def calculate_total(self):
+        total_cost = self.drinks.calculate_cost() + self.food.calculate_cost()
+        tip = Tip(total_cost).calculate_tip(self.tip_percentage)
+        return total_cost + tip
+
+# Sample implementation
+drinks = Drinks(quantity=3)
+food = Food(total_cost=20, split_plate=True)
+bill = Bill(drinks, food, tip_percentage=20)
+print(bill.calculate_total())  # Output: 28.8
+Comparison: Inheritance vs Composition
+Inheritance vs Composition
+Aspect	Inheritance	Composition
+Relationship	"Is a" relationship	"Has a" relationship
+Coupling	Tightly coupled	Loosely coupled
+Flexibility	Less flexible	More flexible
+Code Reusability	High	Moderate
+Complexity	Can become complex with multiple inheritance	It is simpler and easier to manage
+Choosing the Right Approach
+When deciding between inheritance and composition, consider the following:
+
+Use inheritance when there is a clear "is a" relationship, and you need to reuse code from the parent class.
+Use composition when you need flexibility and a "has a" relationship. It is often easier to manage and understand.
+Using Inheritance and Composition Together
+
+
+ 
+
+Sometimes, you may need to use inheritance and composition in your program. Here is an example with a bicycle:
+
+
+# Inheritance and Composition together
+class Bicycle:
+    def __init__(self, speed):
+        self.speed = speed
+
+class Speed20(Bicycle):
+    def __init__(self):
+        super().__init__(speed=20)
+
+class DiskBrakes:
+    def apply_brake(self):
+        return "Disk brakes applied"
+
+class GravelWheels:
+    def __init__(self, tire_type="Gravel"):
+        self.tire_type = tire_type
+
+class AdvancedBicycle(Speed20):
+    def __init__(self):
+        super().__init__()
+        self.brakes = DiskBrakes()
+        self.wheels = GravelWheels()
+
+    def bike_features(self):
+        return f"Speed: {self.speed}, Brakes: {self.brakes.apply_brake()}, Wheels: {self.wheels.tire_type} type"
+
+# Sample implementation
+bike = AdvancedBicycle()
+print(bike.bike_features())  # Output: Speed: 20, Brakes: Disk brakes applied, Wheels: Gravel type
+ 
+
+Assignment: Modeling a Smart Home System
+In this assignment, you will create a program that combines inheritance and composition by modeling a smart home system. You will implement devices like lights and thermostats using composition and specific types of lights using inheritance.
+
+Estimated Time
+Estimated time to complete this assignment: 2 hours
+
+Objective
+By the end of this assignment, students will be able to:
+
+Understand and implement the concepts of inheritance and composition in Python
+Create a smart home system with multiple device classes
+Demonstrate how inheritance and composition can be used together in a single program
+Instructions
+Create a base class called Device that includes common attributes and methods for all devices in the smart home system (e.g., device name, status, and a method to turn the device on and off).
+Create a subclass called Light that inherits from Device. Add specific attributes and methods for a general light (e.g., brightness level).
+Create additional subclasses for specific types of lights, such as LEDLight and SmartBulb, that inherit from Light. Include unique attributes and methods for these specific types of lights.
+Create a class called Thermostat that also inherits from Device. Include attributes and methods specific to a thermostat (e.g., current temperature, target temperature).
+Create a main class called SmartHome that uses composition to include instances of Light, LEDLight, SmartBulb, and Thermostat. This class should have methods to control and manage the different devices.
+Implement a user interface (UI) that allows users to interact with the smart home system. The UI should provide options to turn devices on and off, adjust brightness, and set temperatures. This should be a menu that brings up a list of devices. When you select a device, it should have a menu for off, on, brightness, etc., as well as the option to return to the main menu when done.
+Test your program before handing it in. 
+Sample Output
+When you run your program, the sample output might look something like this:
+
+Smart Home System
+
+Devices:
+1. LED Light - Status: On, Brightness: 75%
+2. Smart Bulb - Status: Off
+3. Thermostat - Status: On, Current Temperature: 72°F, Target Temperature: 68°F
+
+Actions:
+1. Turn LED Light Off
+2. Set LED Light Brightness to 50%
+3. Turn Smart Bulb On
+4. Set Thermostat Target Temperature to 70°F
+5. Exit
+
+Select an action: 1
+
+LED Light turned off.
+
+Devices:
+1. LED Light - Status: Off, Brightness: 75%
+2. Smart Bulb - Status: Off
+3. Thermostat - Status: On, Current Temperature: 72°F, Target Temperature: 68°F
+
+Actions:
+1. Turn LED Light On
+2. Set LED Light Brightness to 50%
+3. Turn Smart Bulb On
+4. Set Thermostat Target Temperature to 70°F
+5. Exit
+
+Select an action: 
+Note: The actual output will depend on how you implement your UI and specific device interactions.
+
+Submission
+Once you have completed the assignment, upload your program to your GitHub repository and provide the link to the repository. Make sure to include comments in your code to explain your implementation.
+
+Happy coding!
+
+ 
+
+How work will be evaluated:
+
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+Glossary
+Glossary
+Inheritance
+A mechanism in OOP that allows one class to inherit attributes and methods from another class.
+Composition
+A design principle where a class is composed of one or more objects from other classes, each handling specific functionality.
+Tightly Coupled
+A situation where classes are highly dependent on one another.
+Loosely Coupled
+A situation where classes have little or no dependency on each other.
+Multiple Inheritance
+A feature where a class can inherit from multiple base classes.
