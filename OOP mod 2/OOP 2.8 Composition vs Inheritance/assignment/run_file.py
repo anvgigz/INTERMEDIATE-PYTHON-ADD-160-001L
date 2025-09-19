@@ -1,3 +1,12 @@
+"""
+main run file for Smart Home Controller Interface.
+    
+This script serves as the main control interface for managing smart home devices
+"""
+
+    
+
+
 from SmartHome import SmartHome
 
 
