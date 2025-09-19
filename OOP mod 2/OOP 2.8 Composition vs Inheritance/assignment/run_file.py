@@ -1,4 +1,4 @@
-from Operating_MAIN import SmartHome
+from SmartHome import SmartHome
 
 
 def run_smart_home():
