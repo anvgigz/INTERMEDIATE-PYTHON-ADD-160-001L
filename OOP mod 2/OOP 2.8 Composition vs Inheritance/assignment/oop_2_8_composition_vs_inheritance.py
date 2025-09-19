@@ -1,4 +1,12 @@
+    """_summary_
+Smart home sub classes
+EXPORTED into SmartHome.py
 
+
+-----------------------------------------------
+RUN PROGRAM FROM run_file.py
+-----------------------------------------------
+    """
 
 
 
