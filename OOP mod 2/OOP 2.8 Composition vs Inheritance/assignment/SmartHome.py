@@ -1,4 +1,12 @@
 """
+EXPORTED INTO run_file.py
+
+-----------------------------------------------
+RUN PROGRAM FROM run_file.py
+-----------------------------------------------
+
+
+
 Smart Home Controller Interface
 
 This script serves as the main control interface for managing smart home devices
