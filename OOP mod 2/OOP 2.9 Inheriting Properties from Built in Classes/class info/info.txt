@@ -1,0 +1,113 @@
+OOP 2.9 Inheriting Properties from Built in Classes
+Due Sunday by 11:59pm Points 5 Submitting a text entry box, a media recording, or a file upload File Types py
+  OOP 2.9 Inheriting Properties from Built-in Classes
+
+
+Objective:
+At the end of this lesson, students will be able to:
+
+Create a subclass that inherits from a built-in class
+Override methods of built-in classes
+Implement custom validation logic in a subclass
+ 
+
+Required Resources for this Assignment:
+Python Institute: 2.9 Inheriting properties from built-in ClassesLinks to an external site.
+
+ 
+
+Inheriting Properties from Built-in Python Classes
+In this lesson, you will learn how to inherit properties from built-in Python classes. We will explore how to use inheritance to extend the functionality of these classes and how to override their methods to customize their behavior.
+
+Inheriting Properties from Built-in Python Classes
+Inheritance allows you to create a new class (subclass) based on an existing class (superclass). The subclass inherits all the properties and methods of the superclass, and you can add or modify functionality in the subclass.
+
+Example: Inheriting from the Built-in List Class
+Let's create a subclass called CustomList that inherits from Python's built-in list class. We'll add a method to validate and create tuples, each containing three integers between 1 and 40.
+
+
+class CustomList(list):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+    def append(self, item):
+        if isinstance(item, tuple) and len(item) == 3 and self._is_valid(*item):
+            super().append(item)
+        else:
+            print("Invalid item. Only tuples with three integers between 1 and 40 are allowed.")
+
+    def _is_valid(self, a, b, c):
+        return all(isinstance(i, int) and 1 <= i <= 40 for i in (a, b, c))
+
+# Create an instance of CustomList
+my_list = CustomList()
+
+# Try to append valid and invalid items
+my_list.append((10, 20, 30))  # Valid tuple
+my_list.append((5, 50, 15))   # Invalid tuple
+print(my_list)  # Output: [(10, 20, 30)]
+
+
+Overriding Methods of Built-in Classes
+You can override methods of a built-in class in your subclass to customize their behavior. Overriding allows you to change how specific methods work while keeping the existing functionality of the other methods.
+
+Example: Overriding the append Method
+In this example, we will override the append method in our CustomList class to ensure that only tuples of three integers between 1 and 40 can be added to the list.
+
+
+class CustomList(list):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+    def append(self, item):
+        if isinstance(item, tuple) and len(item) == 3 and self._is_valid(*item):
+            super().append(item)
+        else:
+            print("Invalid item. Only tuples with three integers between 1 and 40 are allowed.")
+
+    def _is_valid(self, a, b, c):
+        return all(isinstance(i, int) and 1 <= i <= 40 for i in (a, b, c))
+
+# Create an instance of CustomList
+my_list = CustomList()
+
+# Try to append valid and invalid items
+
+my_list.append((10, 20, 30))  # Valid tuple
+my_list.append((5, 50, 15))   # Invalid tuple
+print(my_list)  # Output: [(10, 20, 30)]
+Assignment: Create a Subclass of Python's Built-in str Class
+Objective
+Create a subclass of Python's built-in str class that includes a method to count the number of vowels in the string.
+
+Estimated Time
+30 minutes
+
+Step-by-Step Directions
+Create the Subclass:
+Define a new class that inherits from the built-in str class.
+Use the class keyword followed by the name of your subclass and the name of the superclass in parentheses.
+Initialize the Subclass:
+Define the __init__ method to initialize the subclass.
+Use the super() function to call the initialization method of the str class.
+Add the Method to Count Vowels:
+Define a new method in your subclass that counts the number of vowels in the string.
+Iterate through the characters of the string and count the vowels (a, e, i, o, u, both uppercase and lowercase).
+Test the Subclass:
+Create an instance of your subclass and test the new method to ensure it counts vowels correctly.
+Sample Implementation and Result
+Implementation:
+
+Create a subclass of str named VowelString.
+Add a method called count_vowels that returns the number of vowels in the string.
+Result:
+
+Create an instance of VowelString with the value "Hello, World!".
+Call the count_vowels method on this instance.
+The output should be:
+
+Number of vowels in 'Hello, World!': 3
+Additional Notes
+Ensure that your subclass retains all the functionalities of the built-in str class while adding the new method.
+Consider edge cases, such as empty strings or strings without vowels, in your testing.
+By following these steps, you will successfully create a subclass of Python's built-in str class that includes a method for counting vowels. Make sure to test your implementation thoroughly to verify its accuracy.
