@@ -1,0 +1,7 @@
+import copy
+
+students = [{"name": "Alice"}, {"name": "Bob"}]
+deep_copy = copy.deepcopy(students)
+deep_copy[0]["name"] = "Charlie"
+
+print(students[0]["name"])  # Output: "Alice"

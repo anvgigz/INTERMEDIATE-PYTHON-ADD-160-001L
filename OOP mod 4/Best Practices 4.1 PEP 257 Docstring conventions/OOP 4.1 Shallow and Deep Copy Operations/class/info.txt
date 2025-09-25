@@ -1,0 +1,157 @@
+Objective:
+At the end of this lesson, students will demonstrate how to copy Python objects using shallow and deep copy techniques.
+
+Required Resources for this Assignment:
+Python Institute OOP 4: Shallow and deep copy operationsLinks to an external site.
+
+
+
+ 
+
+Introduction
+In Python, copying objects can be done differently, and understanding these methods is crucial to avoid unexpected behavior in your programs. We will explore how to create copies of objects, the differences between shallow and deep copies, and when to use each method.
+
+Copying Python Objects
+Let's start with a simple example. Consider a list of students:
+
+
+students = ["Alice", "Bob", "Charlie", "Diana"]
+This list is an object in Python. We can use the id() function to get the identity of this list, which is its address in memory.
+
+
+print(id(students))
+The id function returns a unique identifier for the object, the memory address where the object is stored.
+
+Copying Lists
+If we copy students to a new list chemistry_students, both lists will have the same id value because they reference the same object.
+
+
+chemistry_students = students
+print(id(chemistry_students))  # Same as id(students)
+This is because chemistry_students is just a new reference to the same list object.
+
+Comparing Objects
+We can compare the two lists using the == operator to check if their values are equal:
+
+
+print(students == chemistry_students)  # True
+This checks if the values in both lists are equal. However, to check if they reference the same object in memory, we use the is operator:
+
+
+print(students is chemistry_students)  # True
+Creating a New Reference vs. Creating a Copy
+
+
+ 
+
+To create a new reference to the existing object, we assign it to a new variable. To make a copy of the object, we use the slice operation:
+
+
+physics_students = students[:]  # Creates a copy of the list
+print(id(physics_students))  # Different from id(students)
+Now, if we modify the new variable in both examples, we'll see different behaviors:
+
+
+# Modifying the new reference
+chemistry_students.append("Eve")
+print(students)  # ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve']
+
+# Modifying the copied list
+physics_students.append("Frank")
+print(students)  # ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve']
+print(physics_students)  # ['Alice', 'Bob', 'Charlie', 'Diana', 'Frank']
+Shallow Copy vs. Deep Copy
+Creating a shallow copy of a list of objects can be done using the copy method:
+
+
+import copy
+shallow_copy = copy.copy(students)
+However, a shallow copy only copies the references to the objects in the list, not the objects themselves. To create a deep copy, we use the deepcopy() function:
+
+
+deep_copy = copy.deepcopy(students)
+A deep copy creates a new list and recursively copies all objects found in the original.
+
+When to Use Deep Copy
+Deep copying is beneficial when you need to modify a copy of an object without affecting the original object. This is especially important in nested data structures like lists of lists or dictionaries.
+
+Essential Tools in the Python Copy Module
+The copy module provides two main functions: copy() and deepcopy(). Use copy() for shallow copies and deepcopy() for deep copies.
+
+Using deepcopy() on Dictionaries and Class Objects
+Deep copying can also be applied to dictionaries and custom class objects:
+
+
+# Deep copy on dictionaries
+original_dict = {"key1": [1, 2, 3], "key2": "value"}
+deep_copied_dict = copy.deepcopy(original_dict)
+
+# Deep copy on class objects
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+original_student = Student("Alice")
+deep_copied_student = copy.deepcopy(original_student)
+ 
+
+ 
+
+Assignment: Nested List Copies
+Objective
+Demonstrate shallow and deep copies with nested lists.
+
+Instructions
+Create a nested list named nested_list with at least two inner lists.
+Make a shallow copy of nested_list and assign it to shallow_nested_copy.
+Make a deep copy of nested_list and assign it to deep_nested_copy.
+Modify an element in one of the inner lists of shallow_nested_copy.
+Modify an element in one of the inner lists of deep_nested_copy.
+Print all three lists and explain the differences.
+Estimated Time: 45 minutes
+
+Submission: Upload your code to GitHub and submit the link.
+
+Possible Sample Output
+
+Original nested_list: [[1, 2, 3], [4, 5, 6]]
+Shallow copy shallow_nested_copy: [[1, 2, "modified"], [4, 5, 6]]
+Deep copy deep_nested_copy: [[1, 2, 3], [4, 5, "modified"]]
+
+Explanation:
+- The original nested_list remains unchanged.
+- The shallow copy reflects the change in the inner list because it shares references with the original list.
+- The deep copy does not reflect the change in the original list because it is a completely independent copy.
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+Glossary
+id()
+Function that returns a unique identifier for an object, which is its memory address.
+== operator
+Compares the values of two objects to check if they are equal.
+is operator
+Compares the memory addresses of two objects to check if they reference the same object.
+Shallow Copy
+A copy of an object where only the references to the objects are copied.
+Deep Copy
+A copy of an object where all objects are recursively copied, creating a new object entirely.
+copy module
+A Python module that provides functions for copying objects, including copy() for shallow copies and deepcopy() for deep copies.
+ 
