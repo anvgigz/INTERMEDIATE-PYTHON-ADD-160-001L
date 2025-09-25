@@ -1,0 +1,209 @@
+Objective:
+ 
+
+Required Resources for this Assignment:
+Python Institute: OOP 3.1 Advanced ExceptionsLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Python essentials:
+
+Errors and  exceptionsLinks to an external site.
+Handling ExceptionsLinks to an external site.
+Custom ExceptionsLinks to an external site.
+Python Advanced Exceptions
+Objective
+At the end of this lesson, students will understand advanced exception handling in Python, including creating custom exceptions, using named attributes, and chained exceptions, and utilizing the traceback attribute to diagnose errors effectively.
+
+Review – What is an Exception?
+An exception is an error that occurs during the execution of a program. When an exception is raised, the normal flow of the program is interrupted, and Python looks for an appropriate way to handle the error.
+
+Raising an Exception
+You can raise an exception using the raise keyword followed by the exception you want to raise.
+
+
+# Example of raising an exception
+raise ValueError("This is a ValueError")
+Handling an Exception Using try and except
+You can handle exceptions using a try block followed by one or more except blocks.
+
+
+try:
+    # Code that may raise an exception
+    number = int(input("Enter a number: "))
+except ValueError:
+    # Code to handle the exception
+    print("That's not a valid number!")
+Creating Original Exceptions
+You can create custom exceptions by subclassing the Exception class.
+
+
+# Define a custom exception
+class MyCustomError(Exception):
+    pass
+
+# Raise the custom exception
+raise MyCustomError("This is a custom error message")
+Using Named Attributes (except ValueError as e)
+When handling exceptions, you can capture additional information by using named attributes.
+
+ 
+
+
+try:
+    number = int("Not a number")
+except ValueError as e:
+    print(f"Error: {e}")
+    # Accessing additional information
+    print(f"Encoding: {e.encoding if hasattr(e, 'encoding') else 'N/A'}")
+    print(f"Reason: {e.reason if hasattr(e, 'reason') else 'N/A'}")
+Using named attributes allows us to access more detailed information about the exception, which can be useful for debugging.
+
+Chained Exceptions
+
+
+ 
+
+Chained exceptions allow you to link related exceptions together, providing more context to the error.
+
+
+# What are they
+try:
+    try:
+        1 / 0
+    except ZeroDivisionError as e:
+        raise ValueError("A value error occurred") from e
+except ValueError as e:
+    print(f"ValueError: {e}")
+    print(f"Original exception: {e.__cause__}")
+Using __context__ Attribute
+The __context__ attribute is automatically set when an exception is raised while another exception is handled.
+
+
+try:
+    try:
+        1 / 0
+    except ZeroDivisionError as e:
+        raise ValueError("A value error occurred")
+except ValueError as e:
+    print(f"ValueError: {e}")
+    print(f"Context: {e.__context__}")
+Using __cause__ Attribute
+The __cause__ attribute is explicitly set when you use the from keyword to chain exceptions.
+
+
+try:
+    try:
+        1 / 0
+    except ZeroDivisionError as e:
+        raise ValueError("A value error occurred") from e
+except ValueError as e:
+    print(f"ValueError: {e}")
+    print(f"Cause: {e.__cause__}")
+Using except Exception to Catch Any Unanticipated Errors
+To catch any unanticipated errors, you can use a general except Exception block.
+
+
+try:
+    # Code that may raise any exception
+    result = 10 / 0
+except Exception as e:
+    print(f"An error occurred: {e}")
+Explicitly Chained Exceptions
+You can explicitly chain exceptions using the from keyword to provide more context to the error.
+
+
+try:
+    open("non_existent_file.txt")
+except FileNotFoundError as e:
+    raise RuntimeError("Failed to open the file") from e
+
+
+ 
+
+Using the Traceback Attribute
+The traceback attribute provides detailed information about the exception's call stack, which is useful for debugging.
+
+
+
+
+
+
+
+
+import traceback
+
+try:
+    1 / 0
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+    print("Traceback:")
+    traceback.print_tb(e.__traceback__)
+ 
+
+Assignment
+Programming Assignment: Chained Exceptions
+Write a program that uses chained exceptions to handle multiple layers of errors. Include usage of __context__ and __cause__. Estimate: 45 minutes. Upload to GitHub and submit the link.
+
+Step-by-Step Directions
+Define Custom Exceptions:
+Create two custom exception classes by subclassing the Exception class. Name them appropriately for the errors you want to handle.
+First Level of Error Handling:
+Write a try block where an error is likely to occur (e.g., file operations, division by zero).
+Raise the first custom exception in this try block.
+Second Level of Error Handling:
+Write a second try block to catch the first custom exception.
+Inside the except block, raise the second custom exception using the from keyword to link it to the first exception.
+Final Error Handling:
+Use an outer try block to handle the second custom exception.
+Print the error message from the second custom exception.
+Access and print the __cause__ attribute to show the original exception that caused it.
+Access and print the __context__ attribute to demonstrate the context of the error.
+Possible Example of a Result of a Running Program
+When you run the program, it should produce an output that clearly shows the chained exceptions, the original cause, and the context. Here’s a possible example:
+
+Handling SecondCustomError: A second custom error occurred
+Cause of the error: A first custom error occurred
+Context of the error: Division by zero
+Instructions for Uploading to GitHub
+Create a Repository:
+Log in to your GitHub account.
+Create a new repository for your project.
+Add Your Program:
+Create a new file in the repository and paste your program code into it.
+Commit the changes with an appropriate message.
+Get the Link:
+Copy the URL of the repository.
+Submit the Link:
+Submit the URL to the appropriate submission platform as instructed.
+Estimated Time: 45 minutes.
+
+ 
+
+How work will be evaluated:
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+Glossary
+Exception
+An error that occurs during the execution of a program, interrupting the normal flow of the program.
+Raise
+Keyword used to trigger an exception.
+try
+Block of code that may raise an exception.
+except
+Block of code that handles an exception.
+Custom Exception
+An exception defined by the user by subclassing the Exception class.
+Named Attributes
+Attributes that provide additional information about an exception, accessed using as.
+Chained Exceptions
+Linking related exceptions to provide more context.
+__context__
+Attribute is automatically set when an exception is raised while another exception is handled.
+__cause__
+Attribute explicitly set when chaining exceptions using the from keyword.
+traceback
+Detailed information about the call stack when the exception was raised.
