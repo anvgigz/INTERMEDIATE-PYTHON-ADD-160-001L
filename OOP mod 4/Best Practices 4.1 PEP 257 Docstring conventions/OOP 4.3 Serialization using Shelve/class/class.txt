@@ -1,0 +1,220 @@
+Objective:
+At the end of this lesson, students will understand how to use the shelve module to serialize Python objects. They will learn about the advantages and best practices of using. shelve and how to convert a previously created program by using pickle to shelve.
+
+Required Resources for this Assignment:
+OOP 4.3: Making Python objects persistent using the shelve moduleLinks to an external site.
+
+Lesson on Python Serialization Using the Shelve Method
+What is Shelve?
+The shelve module in Python provides a simple interface for persisting arbitrary Python objects using a dictionary-like API. Unlike pickle, which requires explicit save and load operations, shelve automatically handles these operations, making it easier to work with.
+
+Best Practices for Using Shelve
+Use shelve for small to medium-sized datasets. For larger datasets, consider using a more robust database solution.
+Be cautious of concurrent access. shelve does not support concurrent write access; use appropriate locking mechanisms if needed.
+Regularly back up your shelve files to avoid data loss.
+Avoid storing sensitive data with shelve, as the serialization format is not secure.
+Serialization Dictionary
+In shelve, the data is stored in a dictionary-like object where the keys are strings, and the values are the Python objects you want to persist. This allows for easy data management and retrieval.
+
+Comparing Shelve and Pickle
+Comparing Shelve and Pickle
+Feature	Shelve	Pickle
+Data Storage	Dictionary-like interface	Explicit serialization and deserialization
+Ease of Use	Easier for simple use cases	Requires more code for simple tasks
+Concurrent Access	Limited support requires locking	No support
+Performance	Suitable for small to medium-sized datasets	Varies, but generally slower due to explicit operations
+Security	Not secure for sensitive data	Not secure for sensitive data
+Functions in the Shelve Module
+shelve.open(filename, flag='c'): Opens the shelve file. The flag parameter determines the mode for opening the file:
+'c': Default mode. Open for reading and writing; create if it doesn't exist.
+'r': Open for reading only.
+'w': Open for writing only.
+'n': Always create a new, empty shelve.
+db[key] = value: Store the value under the given key.
+value = db[key]: Retrieve the value stored under the given key.
+del db[key]: Delete the value stored under the given key.
+db.close(): Close the shelve file.
+Example: Converting the Classroom Program to Use Shelve
+Let's convert our previous program, which used pickle to store a classroom schedule, to use the shelve module instead.
+
+Original Program Using Pickle
+import pickle
+
+# Define the course schedule object
+course_schedule = {
+    'classroom': 'Room 101',
+    'building': 'Science Hall',
+    'number_of_seats': 30,
+    'computers': True
+}
+
+# Serialize the course schedule object to a file
+with open('course_schedule.pkl', 'wb') as f:
+    pickle.dump(course_schedule, f)
+
+# Deserialize the course schedule object from the file
+with open('course_schedule.pkl', 'rb') as f:
+    loaded_course_schedule = pickle.load(f)
+
+print(loaded_course_schedule)
+Modified Program Using Shelve
+import shelve
+
+# Define the course schedule object
+course_schedule = {
+    'classroom': 'Room 101',
+    'building': 'Science Hall',
+    'number_of_seats': 30,
+    'computers': True
+}
+ # Serialize the course schedule object to a shelve
+with shelve.open('course_schedule') as db:
+    db['schedule'] = course_schedule
+
+# Deserialize the course schedule object from the shelve
+with shelve.open('course_schedule') as db:
+    loaded_course_schedule = db['schedule']
+
+print(loaded_course_schedule)
+
+# Annotating the code:
+# 1. Import the shelve module.
+# 2. Define a dictionary representing the course schedule.
+# 3. Open a shelve file named 'course_schedule' in write-back mode.
+# 4. Store the course schedule in the shelve under the key 'schedule'.
+# 5. Open the shelve file again to read the data.
+# 6. Retrieve the course schedule from the shelve using the key 'schedule'.
+# 7. Print the deserialized course schedule object.
+ 
+
+Assignment: Modifying CRUD Address book to use the shelve module
+Lesson Objective
+At the end of this lesson, students will be able to modify an existing CRUD address book program that uses the pickle module to use the shelve module for serialization. They will learn how to transition from using. pickle to shelve to store and manage data persistently.
+
+Estimated Programming Time
+Modifying the existing program to use the shelve module should take approximately 30 to 45 minutes for students who have completed the previous lesson using the pickle module.
+
+Step-by-Step Directions
+Import the Shelve Module:
+Replace the import statement with the pickle module with an import statement for the shelve module.
+
+import shelve
+Define the Data Structure:
+Unlike with pickle, you don't need to define a data structure explicitly. The shelve module provides a dictionary-like interface for storing your data.
+
+Create the Menu Interface:
+Set up a simple text-based menu that presents the user with the following choices:
+
+Add New User
+Search for Existing User
+Change Existing User
+Delete Existing User
+Exit
+Prompt the user to enter their choice.
+
+Add New User:
+Prompt the user to enter the new user's first name, last name, phone number, and email address. Use the shelve module to store the new user's details.
+
+with shelve.open('address_book') as address_book:
+    address_book[last_name + first_name] = {
+        'first_name': first_name,
+        'last_name': last_name,
+        'phone_number': phone_number,
+        'email_address': email_address
+    }
+Search for Existing User:
+Prompt the user to enter the first and last names of the user they want to search for. Use the shelve module to retrieve and display the user's details if found.
+
+Change Existing User:
+Prompt the user to enter the first and last names of the user they want to update. If the user is found, prompt the user to enter the new details and use the shelve module to update the user's details.
+
+Delete Existing User:
+Prompt the user to enter the first and last name they want to delete. If the user is found, use the shelve module to delete their entry.
+
+with shelve.open('address_book') as address_book:
+    del address_book[last_name + first_name]
+Exit:
+Close the shelve database and exit the application. The shelve module automatically handles saving changes, so there's no need for an explicit save function.
+
+Example of a Working Interface
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 1
+
+Enter first name: John
+Enter last name: Doe
+Enter phone number: 123-456-7890
+Enter email address: john.doe@example.com
+User added successfully.
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 2
+
+Enter first name: John
+Enter last name: Doe
+User found:
+First Name: John
+Last Name: Doe
+Phone Number: 123-456-7890
+Email Address: john.doe@example.com
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 4
+
+Enter first name: John
+Enter last name: Doe
+User deleted successfully.
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 5
+Goodbye!
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+Glossary
+Serialization
+The process of converting a Python object into a byte stream.
+Deserialization
+The process of converting a byte stream back into a Python object.
+pickle
+A Python module used for serializing and deserializing Python objects.
+shelve
+A Python module that provides a dictionary-like interface for persistent storage of Python objects.
+flag
+Parameter in shelve.open() that determines the mode for opening the shelve file (e.g., 'c', 'r', 'w', 'n').
+ 
