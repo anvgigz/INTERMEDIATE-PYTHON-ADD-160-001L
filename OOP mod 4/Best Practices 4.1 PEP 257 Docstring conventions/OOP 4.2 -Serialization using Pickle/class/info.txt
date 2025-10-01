@@ -1,0 +1,252 @@
+Objective:
+At the end of this lesson, students will understand how to save and restore Python objects using the pickle module for serialization. They will learn the critical functions of the pickle module and how to apply them to complex data structures that do not save well as flat text files.
+
+Required Resources for this Assignment:
+OOP 4.2: Serialization of Python Objects Using the Pickle ModuleLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Intermediate Python for Non-Programmers: Pickle and PythonLinks to an external site.
+
+
+
+ 
+
+ 
+
+Introduction
+Serialization converts a Python object into a byte stream that can be stored in a file or memory or transmitted across a network. Deserialization is the reverse process, converting the byte stream into a Python object.
+
+Serialization helps save objects that won't save well as flat text files, as it saves the objects in a binary format.
+
+Data Types that Can Be Pickled
+None
+Boolean values
+Integers
+Floating-point numbers
+Strings
+Tuples
+Lists
+Dictionaries
+Sets
+Custom objects
+Critical Functions of the Pickle Module
+The pickle module provides two main functions for serialization and deserialization:
+
+pickle.dump(obj, file): Serializes the object and writes it to the file.
+pickle.load(file): Deserializes the object from the file.
+Example: Serializing and Deserializing a Course Schedule Object
+Let's use an example of creating a course schedule object containing details such as classroom, building, number of seats, and computers. We will serialize this object to a file and then restore it from the file.
+
+Creating and Serializing the Course Schedule Object
+import pickle
+
+# Define the course schedule object
+course_schedule = {
+    'classroom': 'Room 101',
+    'building': 'Science Hall',
+    'number_of_seats': 30,
+    'computers': True
+}
+
+# Serialize the course schedule object to a file
+with open('course_schedule.pkl', 'wb') as f:
+    pickle.dump(course_schedule, f)
+
+# Annotating the code:
+# 1. Import the pickle module.
+# 2. Define a dictionary representing the course schedule.
+# 3. Open a file named 'course_schedule.pkl' in write-binary mode ('wb').
+# 4. Serialize the course schedule object and write it to the file using pickle.dump().
+Deserializing the Course Schedule Object
+# Deserialize the course schedule object from the file
+with open('course_schedule.pkl', 'rb') as f:
+    loaded_course_schedule = pickle.load(f)
+
+print(loaded_course_schedule)
+
+# Annotating the code:
+# 1. Open the file named 'course_schedule.pkl' in read-binary mode ('rb').
+# 2. Deserialize the course schedule object from the file using pickle.load().
+# 3. Print the deserialized course schedule object.
+File Modes for Pickling
+When working with files in Python, it is essential to use the correct file mode:
+
+'wb': Write-binary mode. Use this mode to write a pickled object to a file.
+'rb': Read-binary mode. Use this mode to read a pickled object from a file.
+Popular Names Check Program
+girls_names.pklDownload girls_names.pkl
+
+boys_names.pklDownload boys_names.pkl
+
+Below is a program that reads two lists of the most popular boys' and girls' names from pickle files, gets a first name from a user, and checks if the name is in either list:
+
+import pickle
+
+# Load the pickle files
+with open('boys_names.pkl', 'rb') as f:
+    boys_names = pickle.load(f)
+
+with open('girls_names.pkl', 'rb') as f:
+    girls_names = pickle.load(f)
+
+# Function to check if a name is in the list
+def check_name_in_list(name, names_list):
+    return name in names_list
+
+# Get a first name from the user
+user_name = input("Enter a first name: ").strip()
+
+# Check if the name is in either list
+is_in_boys_names = check_name_in_list(user_name, boys_names)
+is_in_girls_names = check_name_in_list(user_name, girls_names)
+
+# Output the result
+if is_in_boys_names and is_in_girls_names:
+    print(f"The name {user_name} is in both boys' and girls' lists.")
+elif is_in_boys_names:
+    print(f"The name {user_name} is in the boys' list.")
+elif is_in_girls_names:
+    print(f"The name {user_name} is in the girls' list.")
+else:
+    print(f"The name {user_name} is not in either list.")
+
+# Annotating the code:
+# 1. Import the pickle module for reading the pickle files.
+# 2. Load the pickle files into lists using pickle.load().
+# 3. Define a function to check if a name is in the list.
+# 4. Get a first name from the user using input().
+# 5. Strip any extra spaces from the user input.
+# 6. Check if the name is in the boys' or girls' list using the defined function.
+# 7. Print the appropriate message based on whether the name is found in the boys', girls', both, or neither list.
+ 
+
+Assignment: CRUD address program with pickling
+Lesson Objective
+At the end of this lesson, students will be able to create a simple CRUD (Create, Read, Update, Delete) address book application in Python using the pickle module for serialization. Students will learn how to add, search, update, and delete entries in an address book and how to save the changes using Pickle.
+
+Approximate time: 1-2 hours
+
+Step-by-Step Directions
+Define the Data Structure:
+Create a dictionary to store the address book entries. Each entry should have keys for first name, last name, phone number, and email address.
+
+Create the Menu Interface:
+Set up a simple text-based menu that presents the user with the following choices:
+
+Add New User
+Search for Existing User
+Change Existing User
+Delete Existing User
+Exit
+Prompt the user to enter their choice.
+
+Add New User:
+Prompt the user to enter the new user's first name, last name, phone number, and email address.
+
+Add the new user's details to the dictionary.
+
+Call the save function to save the changes.
+
+Search for Existing User:
+Prompt the user to enter the first and last names of the user they want to search for.
+
+Search the dictionary for the user and display their details if found.
+
+Change Existing User:
+Prompt the user to enter the first and last names of the user they want to update.
+
+If the user is found, prompt the user to enter the new details (first name, last name, phone number, and email address).
+
+Update the dictionary with the new details.
+
+Call the save function to save the changes.
+
+Delete Existing User:
+Prompt the user to enter the first and last name they want to delete.
+
+If the user is found, delete their entry from the dictionary.
+
+Call the save function to save the changes.
+
+Exit:
+Exit the application.
+
+Save Function:
+Create a save function that serializes the address book dictionary to a file using. pickle and is called after every save operation.
+
+Example of a Working Interface
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 1
+
+Enter first name: John
+Enter last name: Doe
+Enter phone number: 123-456-7890
+Enter email address: john.doe@example.com
+User added successfully.
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 2
+
+Enter first name: John
+Enter last name: Doe
+User found:
+First Name: John
+Last Name: Doe
+Phone Number: 123-456-7890
+Email Address: john.doe@example.com
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 4
+
+Enter first name: John
+Enter last name: Doe
+User deleted successfully.
+
+Address Book Menu:
+1. Add New User
+2. Search for Existing User
+3. Change Existing User
+4. Delete Existing User
+5. Exit
+Enter your choice: 5
+Goodbye!
+ 
+
+How work will be evaluated:
+
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+Glossary
+Serialization
+The process of converting a Python object into a byte stream.
+Deserialization
+The process of converting a byte stream back into a Python object.
+pickle
+A Python module used for serializing and deserializing Python objects.
+wb
+Write-binary mode, used for writing a pickled object to a file.
+rb
+Read-binary mode, used for reading a pickled object from a file.
