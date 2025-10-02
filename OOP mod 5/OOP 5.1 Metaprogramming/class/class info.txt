@@ -1,0 +1,167 @@
+Objective:
+At the end of this lesson, students will be able to understand the concept of metaprogramming, explain and use metaclasses, and dynamically create new class types using Python.
+
+Required Resources for this Assignment:
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+ 
+
+What is Metaprogramming?
+Metaprogramming is a programming technique where code can manipulate itself or other code. This means that the program can read, generate, analyze, or transform other code. Metaprogramming is used in various scenarios such as creating DSLs (Domain-Specific Languages), code generation, and enhancing code readability and maintainability.
+
+What is a Metaclass?
+A metaclass in Python is a class of a class that defines how a class behaves. A class is an instance of a metaclass. Metaclasses allow you to intercept class creation, modify class properties, or enforce certain patterns.
+
+Example of a Metaclass
+
+# Define a metaclass
+class DuckMeta(type):
+    def __new__(cls, name, bases, dct):
+        dct['quack'] = lambda self: 'Quack!'
+        return super().__new__(cls, name, bases, dct)
+
+# Use the metaclass
+class Duck(metaclass=DuckMeta):
+    pass
+
+# Creating an instance of Duck
+d = Duck()
+print(d.quack())  # Outputs: Quack!
+Comparing Metaclasses and Decorators
+Metaclasses vs Decorators
+Feature	Metaclasses	Decorators
+Definition	Define the behavior of a class	Modify functions or methods
+Scope	Class-level behavior	Function or method-level behavior
+Use Case	Enforcing class structure, modifying class properties	Logging, access control, modifying function behavior
+When to Use Metaclasses
+Metaclasses should be used when you need to enforce certain patterns or constraints on class definitions, or when you need to modify or extend the behavior of classes at the time of their creation. They are powerful but can make the code more complex and harder to understand.
+
+The Type of a Metaclass is 'type'
+In Python, everything is an object, including the classes themselves. The 'type' function is used to create or return the type of an object. When you make a metaclass, it is itself an instance of the 'type' metaclass.
+
+Example
+
+class Meta(type):
+    pass
+
+class Example(metaclass=Meta):
+    pass
+
+print(type(Meta))    # Outputs: <class 'type'>
+print(type(Example)) # Outputs: <class 'Meta'>
+Special Attributes in Python
+Python classes and instances have special attributes that provide information about them. Here are some common special attributes:
+
+Special Attributes
+Attribute	Class/Instance/Both	Description
+__name__	Class	The name of the class
+__class__	Instance	The class to which an instance belongs
+__bases__	Class	A tuple containing the base classes of the class
+__dict__	Both	The namespace containing the class or instance attributes
+Examples
+
+class Duck:
+    pass
+
+d = Duck()
+
+# __name__
+print(Duck.__name__)  # Outputs: Duck
+
+# __class__
+print(d.__class__)    # Outputs: <class '__main__.Duck'>
+
+# __bases__
+print(Duck.__bases__) # Outputs: (<class 'object'>,)
+
+# __dict__
+print(Duck.__dict__)  # Outputs: A mappingproxy object of the class namespace
+print(d.__dict__)     # Outputs: {}
+Dynamically Creating a New Class
+You can dynamically create a new class using the 'type' function. The 'type' function can take three arguments: the class name, the tuple of base classes, and the dictionary of class attributes.
+
+Example: A Duck that Swims and Flies
+
+# Define a new class dynamically
+SwimFlyDuck = type('SwimFlyDuck', (object,), {'swim': lambda self: 'Swimming', 'fly': lambda self: 'Flying'})
+
+# Create an instance
+duck = SwimFlyDuck()
+print(duck.swim())  # Outputs: Swimming
+print(duck.fly())   # Outputs: Flying
+ 
+
+  Assignment Python Metaprogramming
+Programming Assignment: Dynamically Create a Class Using 'type'
+Objective: Use the 'type' function to dynamically create a class with at least two methods.
+
+Step-by-Step Directions:
+Open your Python development environment:
+Start by opening your preferred Python development environment or text editor where you will write your code.
+
+Define the class name:
+Decide on a name for your dynamically created class. This will be the first argument to the 'type' function.
+
+Choose the base classes:
+Determine if your new class will inherit from any other classes. If so, list these base classes in a tuple. If not, you can use an empty tuple or inherit from 'object'. This will be the second argument to the 'type' function.
+
+Create the methods:
+Define at least two methods that your class will have. These methods should be defined as functions in a dictionary, where the keys are the method names and the values are the functions themselves. This dictionary will be the third argument to the 'type' function.
+
+Create the class using 'type':
+Use the 'type' function with the class name, base classes tuple, and dictionary of methods to dynamically create your new class.
+
+Instantiate the class:
+Create an instance of your new class and call its methods to ensure they work correctly.
+
+Document your code:
+Add comments to your code explaining each step and how it works. This will help you and others understand your code better.
+
+Test your code:
+Run your code to make sure there are no errors and that it behaves as expected. Make sure both methods are callable and perform their intended actions.
+
+Save your work:
+Save your Python file with a meaningful name.
+
+Upload to GitHub:
+Navigate to your GitHub directory for the course. Create a new repository or use an existing one, and upload your Python file. Follow the instructions on GitHub to commit and push your changes.
+
+Submit the link:
+Once your code is uploaded to GitHub, copy the URL of your repository. Submit this link as your assignment submission.
+
+Estimated Time: 30 minutes
+
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+ 
+
+Glossary
+Metaprogramming
+Programming techniques that allow code to manipulate itself or other code.
+Metaclass
+A class of a class that defines how a class behaves.
+Decorator
+A function that modifies other functions or methods.
+__name__
+The name of the class.
+__class__
+The class to which an instance belongs.
+__bases__
+A tuple containing the base classes of the class.
+__dict__
+The namespace containing the class or instance attributes.
