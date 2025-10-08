@@ -1,0 +1,15 @@
+Settling widgets
+A familiarity with the Button widget allows us to show you some ways of putting the widgets (not only the buttons) inside windows. There are more of them than just place(), which you learned about in the previous section. To be precise, there are three different methods.
+
+These methods are implemented by geometry managers.
+
+Place is the most detailed one. It forces you to precisely declare a widget's location, pixel by pixel. It won't, however, protect you from some common mistakes causing the widgets to overlap each other or to place some of them, partially or fully, outside the window.
+
+If you don't want to deploy the widgets manually and worry about possible conflicts and failures, you may entrust the whole problem to tkinter. It'll try to guess your intentions and to find the best location for each widget. Unfortunately, its assumptions may not live up to your expectations, and the final result can be really disappointing. This method of settling widgets is implemented by the pack geometry manager.
+
+The grid geometry manager is in the middle, in between the other two geometry managers. It gives you a chance to express your general wishes and tries to deploy the widgets according to them. Note the word general – they aren't as precise as the ones used by place, but are far more detailed than those utilized by pack.
+
+There is one very important aspect of the issue that must be mentioned here: these managers cannot be mixed. Only one of them can be used in one application, unless you want to turn your window into a big mess.
+
+We're talking seriously about it. Don't take it as a joke.
+
