@@ -1,0 +1,179 @@
+Objectives:
+ 
+
+At the end of this lesson, students will be able to:
+
+Create a basic GUI application using Tkinter.
+Use input fields, labels, and buttons in a Tkinter application.
+Implement radio buttons to determine the type of conversion.
+Perform basic calculations based on user input.
+Update labels dynamically based on user input.
+Required Resources for this Assignment:
+GUI 1.5 A Simple GUI applicationLinks to an external site.
+
+ 
+
+
+
+Lesson: Creating a Simple GUI Application in Python
+In this lesson, you will learn how to create a simple graphical user interface (GUI) application using Python's Tkinter library. By the end of this lesson, students will be able to create a program that gets input from the user and displays a result in a message window. Specifically, the program will perform a conversion between pounds (lbs) and kilograms (kg), based on user input.
+
+ 
+
+Step-by-Step Guide
+1. Setting Up the Basic GUI
+
+# Import the Tkinter library
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Weight Converter")
+
+# Create a frame to hold the widgets
+frame = tk.Frame(root)
+frame.pack(padx=10, pady=10)
+
+# Start the main event loop
+root.mainloop()
+In this step, we import the Tkinter library, create the main window, and add a frame to hold our widgets. Finally, we start the main event loop, which waits for user interaction.
+
+2. Adding Input Fields and Labels
+
+# Import the Tkinter library
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Weight Converter")
+
+# Create a frame to hold the widgets
+frame = tk.Frame(root)
+frame.pack(padx=10, pady=10)
+
+# Add a label and input field for the amount
+amount_label = tk.Label(frame, text="Enter the amount:")
+amount_label.pack()
+amount_entry = tk.Entry(frame)
+amount_entry.pack()
+
+# Start the main event loop
+root.mainloop()
+Here, we add a label and an entry field to our frame, allowing the user to input the amount they want to convert.
+
+3. Adding Radio Buttons for Conversion Type
+
+# Import the Tkinter library
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Weight Converter")
+
+# Create a frame to hold the widgets
+frame = tk.Frame(root)
+frame.pack(padx=10, pady=10)
+
+# Add a label and input field for the amount
+amount_label = tk.Label(frame, text="Enter the amount:")
+amount_label.pack()
+amount_entry = tk.Entry(frame)
+amount_entry.pack()
+
+# Add radio buttons for conversion type
+conversion_type = tk.StringVar(value="lb_to_kg")
+lb_to_kg_radio = tk.Radiobutton(frame, text="Pounds to Kilograms", variable=conversion_type, value="lb_to_kg")
+lb_to_kg_radio.pack()
+kg_to_lb_radio = tk.Radiobutton(frame, text="Kilograms to Pounds", variable=conversion_type, value="kg_to_lb")
+kg_to_lb_radio.pack()
+
+# Start the main event loop
+root.mainloop()
+We add radio buttons to allow the user to choose the type of conversion they want to perform: pounds to kilograms or kilograms to pounds. The conversion_type variable holds the selected conversion type.
+
+4. Adding a Calculate Button
+
+# Import the Tkinter library
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Weight Converter")
+
+# Create a frame to hold the widgets
+frame = tk.Frame(root)
+frame.pack(padx=10, pady=10)
+
+# Add a label and input field for the amount
+amount_label = tk.Label(frame, text="Enter the amount:")
+amount_label.pack()
+amount_entry = tk.Entry(frame)
+amount_entry.pack()
+
+# Add radio buttons for conversion type
+conversion_type = tk.StringVar(value="lb_to_kg")
+lb_to_kg_radio = tk.Radiobutton(frame, text="Pounds to Kilograms", variable=conversion_type, value="lb_to_kg")
+lb_to_kg_radio.pack()
+kg_to_lb_radio = tk.Radiobutton(frame, text="Kilograms to Pounds", variable=conversion_type, value="kg_to_lb")
+kg_to_lb_radio.pack()
+
+# Add a calculate button
+def calculate():
+    try:
+        amount = float(amount_entry.get())
+        if conversion_type.get() == "lb_to_kg":
+            result = amount * 0.453592
+            result_label.config(text=f"{amount} lbs is {result:.2f} kg")
+        else:
+            result = amount / 0.453592
+            result_label.config(text=f"{amount} kg is {result:.2f} lbs")
+    except ValueError:
+        result_label.config(text="Please enter a valid number")
+
+calculate_button = tk.Button(frame, text="Calculate", command=calculate)
+calculate_button.pack()
+
+# Add a label to display the result
+result_label = tk.Label(frame, text="")
+result_label.pack()
+
+# Start the main event loop
+root.mainloop()
+We add a calculate button that, when clicked, calls the calculate function. This function reads the input amount, performs the conversion based on the selected radio button, and updates the result label with the conversion result.
+
+Test, make sure everything is working, and submit to GitHub
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+This should take approximately 1 hour
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each late day.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+Glossary
+GUI
+Graphical User Interface, a visual way of interacting with a computer program.
+Tkinter
+A standard Python library used to create GUI applications.
+Frame
+A container widget in Tkinter used to hold other widgets.
+Label
+A widget in Tkinter used to display text or images.
+Entry
+A widget in Tkinter used to accept user input.
+Radiobutton
+A widget in Tkinter that allows the user to select one option from a set of options.
+Button
+A widget in Tkinter that the user can click to trigger an action.
+ 
+
+ 
