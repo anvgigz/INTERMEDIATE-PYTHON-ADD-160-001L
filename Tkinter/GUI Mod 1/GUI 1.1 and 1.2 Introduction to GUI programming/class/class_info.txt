@@ -1,0 +1,183 @@
+Objectives:
+Identify and describe the components of a window
+Recognize and utilize common widgets in GUI applications
+Implement event-driven programming using a simple calculator example
+Create a basic GUI application using Tkinter in Python
+Required Resources for this Assignment:
+1.1 What is a GUI and why do we like it?Links to an external site.
+1.2 Let TkInter speakLinks to an external site.
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Tk and TkInter backgroundLinks to an external site.
+ 
+
+What is GUI?
+GUI stands for Graphical User Interface. It's a type of user interface that allows users to interact with electronic devices using graphical icons and visual indicators, as opposed to text-based interfaces, typed command labels, or text navigation.
+
+We use GUIs to make interactions with software more intuitive and user-friendly. It allows users to operate software without needing to know specific command-line instructions.
+
+Components of a Window
+A typical window in a GUI application consists of several components:
+
+Title Bar: The bar at the top of the window that displays the name of the application or document.
+Frame: The border around the window.
+Buttons: Controls for minimizing, maximizing, and closing the window.
+Icons: Small graphical representations of commands, files, or functions.
+Close Button: The button used to close the window.
+Windows with labeled elements: title box, label, button, message box
+
+Widgets
+Widgets are the building blocks of GUI applications. Elements like buttons, labels, text boxes, and sliders allow users to interact with the application.
+
+Some common widgets include:
+
+Labels: Used to display text or images.
+Buttons: Used to perform an action when clicked.
+Entry Fields: Used to input text.
+Checkbuttons and Radiobuttons: Used for selecting options.
+ 
+
+Event-Driven Programming
+Event-driven programming is a paradigm in which the program's flow is determined by events such as user actions (mouse clicks, key presses), sensor outputs, or message passing. In the context of a calculator, each button press triggers a specific function.
+
+A Brief History of Tkinter
+Tkinter is the standard GUI library for Python. Python’s Tkinter library is a standard way to create GUIs in Python. It is a thin object-oriented layer on top of Tcl/Tk, a popular GUI toolkit. Tkinter is used in many programming languages, including Perl, Ruby, and, of course, Python.
+
+Creating a Simple Tkinter Application
+Let's create a simple Tkinter application. This application will generate a window titled "Stop" with a label that says "Don't click the button" and a button that says "Button". When the button is clicked, a message box will appear asking if you are sure you want to leave. If confirmed, the application will close.
+
+Code Example
+
+import tkinter as tk
+from tkinter import messagebox
+
+# Create the main window
+root = tk.Tk()
+root.title("Stop")
+root.geometry("200x200")
+
+# Create a label
+label = tk.Label(root, text="Don't click the button")
+label.pack(pady=20)
+
+# Define the function to be called when the button is clicked
+def on_button_click():
+    if messagebox.askyesno("Exit", "Are you sure you want to leave?"):
+        root.destroy()
+
+# Create a button
+button = tk.Button(root, text="Button", command=on_button_click)
+button.place(x=75, y=100)
+
+# Run the application
+root.mainloop()
+Assignment: Create a Joke-Telling Application
+Objective
+By the end of this exercise, you can create a Tkinter application that displays a joke and shows the punchline in a message box, then closes the application.
+
+Step 1: Import Required Libraries
+First, you need to import the necessary libraries. In this case, you will import Tkinter and the messagebox module.
+
+
+import tkinter as tk
+from tkinter import messagebox
+Step 2: Create the Main Window
+Create the main window for your application and give it a title "Joke".
+
+
+# Create the main window
+root = tk.Tk()
+root.title("Joke")
+root.geometry("300x150")
+Step 3: Add a Label with the Joke
+Add a label to the window that displays the setup for the joke. ( Use a different joke!)
+
+
+# Add a label with the joke setup
+joke_label = tk.Label(root, text="Why don't scientists trust atoms?")
+joke_label.pack(pady=20)
+Step 4: Define the Function to Show the Punchline
+Define a function that will display the punchline in a message box and then close the application.
+
+
+# Define the function to show the punchline
+def show_punchline():
+    messagebox.showinfo("Punchline", "Because they make up everything!")
+    root.destroy()
+Step 5: Add a Button to Trigger the Punchline
+Add a button to the window that will trigger the function to show the punchline when clicked.
+
+
+# Add a button to show the punchline
+punchline_button = tk.Button(root, text="Show Punchline", command=show_punchline)
+punchline_button.pack(pady=10)
+Step 6: Run the Application
+Finally, run the application to display the window and handle events.
+
+
+# Run the application
+root.mainloop()
+Complete Code
+Here is the complete code for the joke-telling application:
+
+
+import tkinter as tk
+from tkinter import messagebox
+
+# Create the main window
+root = tk.Tk()
+root.title("Joke")
+root.geometry("300x150")
+
+# Add a label with the joke setup
+joke_label = tk.Label(root, text="Why don't scientists trust atoms?")
+joke_label.pack(pady=20)
+
+# Define the function to show the punchline
+def show_punchline():
+    messagebox.showinfo("Punchline", "Because they make up everything!")
+    root.destroy()
+
+# Add a button to show the punchline
+punchline_button = tk.Button(root, text="Show Punchline", command=show_punchline)
+punchline_button.pack(pady=10)
+
+# Run the application
+root.mainloop()
+Once you've completed the code, save it as joke_app.py and run it to see your joke-telling application in action!
+
+Assignment Submission
+Please submit your completed joke-telling application by uploading it to your GitHub directory and providing the link.
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+Glossary
+GUI
+Graphical User Interface is a type of interface that allows users to interact with electronic devices using graphical icons and visual indicators.
+Title Bar
+The bar at the top of a window that displays the name of the application or document.
+Frame
+The border around a window.
+Buttons
+Controls for minimizing, maximizing, and closing a window.
+Icons
+Small graphical representations of commands, files, or functions.
+Close Button
+The button used to close a window.
+Widgets
+Elements like buttons, labels, text boxes, and sliders allow users to interact with the application.
+Event-Driven Programming
+A programming paradigm where the flow of the program is determined by events such as user actions, sensor outputs, or message passing.
+Tkinter is the standard GUI library for Python, with a thin object-oriented layer on top of Tcl/Tk.
