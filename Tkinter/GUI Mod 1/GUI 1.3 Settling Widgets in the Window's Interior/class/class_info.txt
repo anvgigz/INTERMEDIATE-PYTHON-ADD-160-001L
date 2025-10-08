@@ -1,0 +1,148 @@
+Objectives:
+In this lesson, you will learn how to place widgets inside a window using three different methods in Python's Tkinter library: place, pack, and grid. By the end of this lesson, you will be able to:
+
+Understand and implement the place, pack, and grid geometry managers
+Recognize the importance of not mixing geometry managers
+Choose the appropriate geometry manager based on your application's needs
+Required Resources for this Assignment:
+Python Institute GUI 1.3: Settling widgets in the window's interiorLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Creating and configuring widgetsLinks to an external site.
+Managing widget placementLinks to an external site.
+ 
+
+Using the place Method
+The place method allows you to position widgets at specific coordinates within the window. You can specify the x and y coordinates, as well as the width and height of the widget.
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Create a label widget
+label = tk.Label(root, text="This is a placed label")
+
+# Place the label at specific coordinates with specific dimensions
+label.place(x=50, y=100, width=200, height=50)
+
+root.mainloop()
+Using the grid Method
+The grid method arranges widgets in a table-like structure of rows and columns. You can specify each widget's row and column and make a widget span multiple columns or rows.
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Create label widgets
+label1 = tk.Label(root, text="Label 1")
+label2 = tk.Label(root, text="Label 2")
+label3 = tk.Label(root, text="Label 3")
+
+# Place labels in the grid
+label1.grid(row=0, column=0)
+label2.grid(row=1, column=1)
+label3.grid(row=2, column=0, columnspan=2)  # Span across two columns
+
+root.mainloop()
+Using the pack Method
+The pack method organizes widgets in blocks before placing them in the parent widget. You can specify the side of the window where the widget should be placed and how it should fill the space.
+
+import tkinter as tk
+
+root = tk.Tk()
+
+# Create label widgets
+top_label = tk.Label(root, text="Top")
+bottom_label = tk.Label(root, text="Bottom")
+left_label = tk.Label(root, text="Left")
+right_label = tk.Label(root, text="Right")
+
+# Pack the labels in different positions
+top_label.pack(side="top", fill="x")
+bottom_label.pack(side="bottom", fill="x")
+left_label.pack(side="left", fill="y")
+right_label.pack(side="right", fill="y")
+
+root.mainloop()
+Advantages and Disadvantages
+Place:
+Advantages: Precise control over widget positioning.
+Disadvantages: Managing when resizing the window or adding more widgets can be cumbersome.
+Best Use: When exact positioning is needed, and the layout is simple.
+Grid:
+Advantages: Flexible and easy to manage for complex layouts.
+Disadvantages: Can become complex with deeply nested grids.
+Best Use: When creating a form-like layout with rows and columns.
+Pack:
+Advantages: Simple and quick to use for basic layouts.
+Disadvantages: Less control over precise positioning compared to place and grid.
+Best Use: When the layout is simple and widgets can be stacked.
+ 
+
+Assignment: Design a Form Using the Grid Method
+In this assignment, you will create a simple form using Python's Tkinter library and the grid Geometry manager. The form should include labels and entry widgets for the Name, Email, and Password fields. Ensure that the labels and entry widgets are correctly aligned.
+
+Step-by-Step Directions
+ 
+
+Import the Tkinter library. If you are using Python 3, you can do this with the following line of code:
+
+import tkinter as tk
+Create the main application window by initializing an instance of Tkinter's Tk class:
+
+root = tk.Tk()
+Create label widgets for Name, Email, and Password:
+
+Create entry widgets for Name, Email, and Password:
+
+Use the grid method to place each label and entry widget in the appropriate row and column. Ensure that the labels and entry widgets are correctly aligned:
+
+Place the Name label in the first row and first column.
+Place the Name entry widget in the first row and second column.
+Place the Email label in the second row and first column.
+Place the Email entry widget in the second row and second column.
+Place the Password label in the third row and first column.
+Place the Password entry widget in the third row and second column.
+Run your Python script to display the form.
+
+Sample Output
+The resulting form should look similar to the following:
+
+sample form
+
+Estimated time: 45 minutes
+
+Once you have completed the assignment, upload your finished Python file to your GitHub directory for the course and submit the link.
+
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+Glossary
+Widget
+A graphical user interface element, such as a button, label, or text box.
+Geometry Manager
+A method in Tkinter that controls the positioning and sizing of widgets.
+Place
+A geometry manager that places widgets at specific coordinates within a window.
+Grid
+A geometry manager that arranges widgets in a table-like structure of rows and columns.
+Pack
+A geometry manager that organizes widgets in blocks before placing them in the parent widget.
+ 
+
+Meri Kasprak, Ph.D., created this course in collaboration with ChatGPT.
+All images created by ChatGPT to specification. © 2024
