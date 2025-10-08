@@ -1,0 +1,173 @@
+Objectives:
+In this lesson, you will learn how to change the colors of widgets in a Tkinter GUI application. By the end of this lesson, you will be able to:
+
+Change the color of a button in both its raised and pressed states using color names.
+Change the color of a button using RGB values.
+Create a complete form with RGB-colored backgrounds for all components, including a close button.
+Required Resources for this Assignment:
+Python Institute: GUI: 1.4 Coloring your widgetsLinks to an external site.
+
+Supplemental Resources for this Assignment:
+Using colors in TKInter (ATlas youtube)Links to an external site.
+
+ 
+
+Coloring Your Widgets in Python with Tkinter
+Changing Button Colors with Color Names
+You can easily change the color of a button in Tkinter by specifying the color names for its background and text. Here's an example where a button is green with white text when raised, and white with green text when pressed.
+
+ import tkinter as tk
+
+# Function to change the button color when pressed
+def on_button_press(event):
+    event.widget.config(bg='white', fg='green')
+
+# Function to reset the button color when released
+def on_button_release(event):
+    event.widget.config(bg='green', fg='white')
+
+# Create the main window
+root = tk.Tk()
+root.title("Button Color Example")
+
+# Create a button
+button = tk.Button(root, text="Press Me", bg='green', fg='white')
+
+# Bind the press and release events to the functions
+button.bind("", on_button_press)
+button.bind("", on_button_release)
+
+# Place the button in the window
+button.pack(pady=20)
+
+# Run the Tkinter event loop
+root.mainloop()
+For a list of all Tkinter color names with their RGB codes, visit this linkLinks to an external site..
+
+Changing Button Colors with RGB Values
+Instead of using color names, you can use RGB values to specify colors. Here's the same example using RGB values.
+
+
+import tkinter as tk
+
+# Function to change the button color when pressed
+def on_button_press(event):
+    event.widget.config(bg='#FFFFFF', fg='#008000')  # White background, green text
+
+# Function to reset the button color when released
+def on_button_release(event):
+    event.widget.config(bg='#008000', fg='#FFFFFF')  # Green background, white text
+
+# Create the main window
+root = tk.Tk()
+root.title("Button Color Example with RGB")
+
+# Create a button
+button = tk.Button(root, text="Press Me", bg='#008000', fg='#FFFFFF')  # Green background, white text
+
+# Bind the press and release events to the functions
+button.bind("", on_button_press)
+button.bind("", on_button_release)
+
+# Place the button in the window
+button.pack(pady=20)
+
+# Run the Tkinter event loop
+root.mainloop()
+To pick your own RGB colors, you can use this RGB color pickerLinks to an external site..
+
+Creating a Complete Form with RGB Colored Backgrounds
+Now, let's create a simple form that asks for the user's first and last name. All form components will have RGB-colored backgrounds, including a close button.
+
+
+import tkinter as tk
+
+# Function to close the application
+def close_app():form with color buttons     root.destroy()
+
+# Create the main window
+root = tk.Tk()
+root.title("User Form")
+
+# Set the background color of the main window
+root.config(bg='#D3D3D3')  # Light gray background
+
+# Create and place labels and entry widgets for first and last names
+tk.Label(root, text="First Name", bg='#D3D3D3').grid(row=0, column=0, padx=10, pady=5)
+tk.Label(root, text="Last Name", bg='#D3D3D3').grid(row=1, column=0, padx=10, pady=5)
+
+first_name_entry = tk.Entry(root, bg='#FFFFFF', fg='#000000')  # White background, black text
+last_name_entry = tk.Entry(root, bg='#FFFFFF', fg='#000000')  # White background, black text
+
+first_name_entry.grid(row=0, column=1, padx=10, pady=5)
+last_name_entry.grid(row=1, column=1, padx=10, pady=5)
+
+# Create and place a submit button
+submit_button = tk.Button(root, text="Submit", bg='#4CAF50', fg='#FFFFFF')  # Green background, white text
+submit_button.grid(row=2, column=0, columnspan=2, pady=10)  # Create and place a close button
+close_button = tk.Button(root, text="Close", bg='#FF0000', fg='#FFFFFF', command=close_app)  # Red background, white text
+close_button.grid(row=3, column=0, columnspan=2, pady=10)
+
+# Run the Tkinter event loop
+root.mainloop()
+Assignment: Creating  a Tkinter Application with Multiple Buttons
+Objective: Create a Tkinter application with multiple buttons, each with different color states for raised and pressed.
+
+Estimated Time: 60 minutes
+
+Step-by-Step Directions
+
+
+Set Up Your Development Environment:
+Open your preferred Python IDE or text editor.
+Create a new Python file and save it with a .py extension.
+Import Tkinter Module:
+Import the Tkinter module at the beginning of your file. This will allow you to create the GUI components for your application.
+Create the Main Window:
+Initialize the main window of your application using Tkinter. Set an appropriate title for the window.
+Define Color Change Functions:
+Create two functions for each button. One function should change the button's color when pressed, and the other should reset the color when the button is released.
+Create Buttons:
+Create three buttons, each with different colors for their raised and pressed states. Assign the appropriate functions to the ButtonPress-1 and ButtonRelease-1 events of each button.
+Create Labels:
+Create three labels to accompany the buttons. These labels can describe the buttons or provide additional information.
+Use the Grid Layout:
+Use the grid layout to organize the buttons and labels within the main window. Ensure that each component is properly aligned and spaced.
+Run the Application:
+Start the Tkinter event loop to run the application. This will display the window and allow users to interact with the buttons.
+Test Your Application:
+Test the application to ensure each button changes color correctly when pressed and released. Make any necessary adjustments to your code.
+Save and Submit:
+Save your final Python file.
+Upload your finished assignment to your course directory on GitHub.
+Submit the link to your instructor.
+Additional Tips:
+
+Use descriptive names for your functions and variables to make your code easier to understand.
+Experiment with different colors to create a visually appealing application.
+Ensure your buttons and labels are easily distinguishable and appropriately spaced.
+By following these steps, you will create a Tkinter application with multiple buttons that change color when interacted with, enhancing your understanding of GUI development with Python.
+
+ 
+
+How work will be evaluated:
+
+
+ 
+
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+Glossary
+Tkinter
+A standard GUI (Graphical User Interface) library in Python used to create desktop applications.
+Widget
+An element of a GUI, such as a button, label, text box, etc.
+RGB
+Red, Green, Blue. A color model used to create a wide range of colors by combining these three primary colors.
+Event
+An action or occurrence detected by the program, such as a mouse click or a key press.
+ 
