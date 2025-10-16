@@ -1,0 +1,220 @@
+Objective:
+By the end of this lesson, students will be able to understand and manipulate Tkinter widget properties using dot notation, cget(), and config() methods. They will also learn how to customize widget appearance, including text, font, padding, border, colors, and cursor behavior.
+
+Required Resources for this Assignment:
+GUI 1.7: Visiting Widgets PropertiesLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Displaying text and images with labelsLinks to an external site.
+
+
+
+ 
+
+Introduction
+In this lesson, we'll explore how to work with Tkinter widgets in Python. We'll cover how to get and set widget properties using dot notation, cget(), and config() methods. We'll also demonstrate how to change the appearance of labels and buttons.
+
+Changing Widget Properties Using Dot Notation
+Let's start with an example of how to change the properties of a button using dot notation.
+
+# Import necessary modules
+import tkinter as tk
+
+# Create a main window
+root = tk.Tk()
+root.title("Tkinter Widget Properties")
+
+# Define a function to toggle button text
+def toggle_button_text():
+    if button['text'] == "Hello":
+        button['text'] = "Goodbye"
+    else:
+        button['text'] = "Hello"
+
+# Create a button widget
+button = tk.Button(root, text="Hello", command=toggle_button_text)
+button.pack(pady=20)
+
+# Run the application
+root.mainloop()
+Changing Widget Properties Using cget() and config()
+Next, we'll demonstrate how to use cget() to get the current value of a property and config() to set a new value.
+
+# Import necessary modules
+import tkinter as tk
+
+# Create a main window
+root = tk.Tk()
+root.title("Tkinter Widget Properties")
+
+# Define a function to toggle button text using cget() and config()
+def toggle_button_text():
+    current_text = button.cget("text")
+    if current_text == "Hello":
+        button.config(text="Goodbye")
+    else:
+        button.config(text="Hello")
+
+# Create a button widget
+button = tk.Button(root, text="Hello", command=toggle_button_text)
+button.pack(pady=20)
+
+# Run the application
+root.mainloop()
+Changing Label Fonts
+Now, let's change the font of labels using different values for the font name, size, and style.
+
+# Import necessary modules
+import tkinter as tk
+
+# Create a main window
+root = tk.Tk()
+root.title("Tkinter Label Fonts")
+
+# Create label widgets with different fonts
+label1 = tk.Label(root, text="Hello world!", font=("Helvetica", 16))
+label2 = tk.Label(root, text="Hello world!", font=("Arial", 20, "bold"))
+label3 = tk.Label(root, text="Hello world!", font=("Times New Roman", 24, "italic"))
+label4 = tk.Label(root, text="Hello world!", font=("Courier New", 28, "underline"))
+
+# Pack the labels
+label1.pack(pady=5)
+label2.pack(pady=5)
+label3.pack(pady=5)
+label4.pack(pady=5)
+
+# Run the application
+root.mainloop()
+Adding Padding, Border, and Underlining
+Next, we'll modify the code to include padding, border, and underlining on different displayed text.
+
+# Import necessary modules
+import tkinter as tk
+
+# Create a main window
+root = tk.Tk()
+root.title("Tkinter Label Customization")
+
+# Create label widgets with different customizations
+label1 = tk.Label(root, text="Hello world!", font=("Helvetica", 16), padx=10, pady=10)
+label2 = tk.Label(root, text="Hello world!", font=("Arial", 20, "bold"), bd=5, relief="solid")
+label3 = tk.Label(root, text="Hello world!", font=("Times New Roman", 24, "italic"), underline=True)
+label4 = tk.Label(root, text="Hello world!", font=("Courier New", 28, "underline"), bg="yellow", fg="blue")
+
+# Pack the labels
+label1.pack(pady=5)
+label2.pack(pady=5)
+label3.pack(pady=5)
+label4.pack(pady=5)
+
+# Run the application
+root.mainloop()
+Adding Anchors
+We'll now add anchors to put the text in different areas within their field.
+
+# Import necessary modules
+import tkinter as tk
+
+# Create a main window
+root = tk.Tk()
+root.title("Tkinter Label Anchors")
+
+# Create label widgets with different anchors
+label1 = tk.Label(root, text="Hello world!", font=("Helvetica", 16), anchor="w")
+label2 = tk.Label(root, text="Hello world!", font=("Arial", 20, "bold"), anchor="e")
+label3 = tk.Label(root, text="Hello world!", font=("Times New Roman", 24, "italic"), anchor="n")
+label4 = tk.Label(root, text="Hello world!", font=("Courier New", 28, "underline"), anchor="s")
+
+# Pack the labels
+label1.pack(pady=5, fill="both")
+label2.pack(pady=5, fill="both")
+label3.pack(pady=5, fill="both")
+label4.pack(pady=5, fill="both")
+
+# Run the application
+root.mainloop()
+Changing the Cursor
+Finally, let's demonstrate changing the cursor when it hovers over a button.
+
+# Import necessary modules
+import tkinter as tk
+
+# Create a main window
+root = tk.Tk()
+root.title("Tkinter Button Cursor")
+
+# Create a button widget with custom cursor
+button = tk.Button(root, text="Hover over me", cursor="hand2")
+button.pack(pady=20)
+
+# Run the application
+root.mainloop()
+ 
+
+Assignment: Customizing  Tkinter Widgets
+Objective
+Create a Tkinter application with three buttons and three lines of text, each with different customizations.
+
+Instructions
+Open Visual Studio Code.
+
+Create a new Python file and name it custom_widgets.py.
+
+Import the necessary Tkinter module at the beginning of your script.
+
+Create a main window using the Tk() method.
+
+Create three buttons with different foreground and background colors:
+
+Button 1: Choose a foreground and background color of your choice.
+Button 2: Choose a different foreground and background color.
+Button 3: Choose another set of varying foreground and background colors.
+Set the mouse cursor to change when hovering over each button. You can choose cursors like "hand2", "arrow", etc.
+
+Create three lines of text using label widgets. Customize each line with different fonts, font sizes, and enhancements:
+
+Text 1: Choose a font, size, and style (e.g., bold, italic).
+Text 2: Choose a different font, size, and style.
+Text 3: Choose another font, size, and style.
+Optionally, set different foreground and background colors for each line of text.
+
+Align the text differently within their labels using the anchor property (e.g., west, east, north, south).
+
+Use the pack() method to arrange your buttons and labels in the main window.
+
+Run the Tkinter main loop to display the window and widgets.
+
+Submission
+Save your completed program and upload it to your course directory on GitHub. Provide the link to your instructor.
+
+ 
+
+How work will be evaluated:
+ 
+
+
+
+ 
+
+Estimate of how long the assignment will take: 60 minutes
+Late Submission Penalty: Assignments submitted late will lose 10% of the possible points for each day they are late.
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+ 
+
+Glossary: 
+Dot Notation
+A way to access and set the properties of an object using the dot (.) operator.
+cget()
+A method used to retrieve the current value of a widget's option.
+config()
+A method used to set the value of a widget's option.
+Anchor
+A property that specifies the position of text within a widget.
