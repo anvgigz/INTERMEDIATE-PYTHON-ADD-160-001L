@@ -1,0 +1,179 @@
+Objectives:
+At the end of this lesson, students will be able to:
+
+Create a basic GUI application using Python's Tkinter module
+Understand and implement event handling in a GUI application
+Differentiate between using print() and showinfo() for debugging and user feedback
+Use the command property and event bindings
+Required Resources for this Assignment:
+GUI: 1.6 Events and how to handle themLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+LinkedIn Learning: Handling User eventsLinks to an external site.
+
+Sample Code and Explanation
+# Importing necessary modules
+import tkinter as tk
+from tkinter import messagebox
+
+# Function to be called when the button is clicked
+def on_button_click():
+    # Print message to the console
+    print("Hello")
+    # Show message box with the message
+    messagebox.showinfo("Message", "Hello")
+
+# Function to quit the application
+def on_quit():
+    window.destroy()
+
+# Create the main window
+window = tk.Tk()
+window.title("Simple GUI Application")
+
+# Create a button and set its command property
+button = tk.Button(window, text="Click Me", command=on_button_click)
+button.pack(pady=10)
+
+# Create a quit button and set its command property
+quit_button = tk.Button(window, text="Quit", command=on_quit)
+quit_button.pack(pady=10)
+
+# Run the application
+window.mainloop()
+Explanation
+print(): This function outputs text to the console. It is useful for debugging but does not provide user-friendly feedback within the GUI.
+messagebox.showinfo(): This function displays a message box with the specified message. It is more user-friendly as it directly interacts with the user via the GUI.
+command property: This property is used to bind a function to a widget (like a button). When the widget is interacted with, the function is called.
+Event Handling
+In GUI programming, events are actions such as mouse clicks or key presses. Widgets can handle these events using the bind method.
+
+Table of Events and Their Names
+Events
+Event	Name
+Left mouse button click	<Button-1>
+Right mouse button click	<Button-3>
+Key press	<Key>
+Key release	<KeyRelease>
+Using frame.bind
+# Function to be called when a key is pressed
+def on_key_press(event):
+    print(f"Key pressed: {event.keysym}")
+
+# Create a frame
+frame = tk.Frame(window, width=200, height=200)
+frame.bind("", on_key_press)
+frame.pack()
+
+# Set focus to the frame to capture key events
+frame.focus_set()
+frame.bind method binds an event to a function. Here, <Key> event is bound to on_key_press function. The focus_set method is used to set the focus to the frame so that it can capture key events.
+
+Event Object Properties
+When an event is triggered, an event object is passed to the function. This object contains various properties about the event.
+
+Event Objects
+Property	Description
+keysym	The key symbol (e.g., 'a', 'Return')
+x	The x-coordinate of the mouse pointer
+y	The y-coordinate of the mouse pointer
+Using bind_all and unbind_all
+# Function to be called when any key is pressed
+def on_any_key(event):
+    print(f"Any key pressed: {event.keysym}")
+
+# Bind all key events to the function
+window.bind_all("", on_any_key)
+
+# Unbind all key events from the function
+window.unbind_all("")
+bind_all method binds an event to all widgets in the application, while unbind_all removes such bindings.
+
+Glossary
+Programming Assignments
+Create a GUI application with a button that prints a custom message to the console and shows it in a message box. (Estimated time: 30 minutes)
+Modify the application to include a text entry widget and a button that displays the entered text in a message box. (Estimated time: 45 minutes)
+Create an application with multiple buttons that perform different actions, such as changing the background color of the window. (Estimated time: 1 hour)
+Implement event binding for key presses to perform specific actions, such as moving a label within the window. (Estimated time: 1 hour)
+Upload your completed assignments to your course directory on GitHub and submit the link.
+
+ 
+
+Assignment: Create a GUI Application with Multiple Buttons
+Objective
+Create a Python GUI application with multiple buttons that perform different actions, such as changing the background color of the window, displaying lines of a song or poem one at a time, and one other action of your choice.
+
+Estimated Time to Complete
+1.5 to 2 hours
+
+Step-by-Step Directions
+ 
+
+Create the Main Application Window:
+Initialize the Tkinter window.
+Set the title of the window.
+Set the default size of the window.
+Add Buttons for Different Actions:
+Create a button that changes the background color of the window.
+Create a button that displays lines of a song or poem one at a time.
+Choose one additional action (suggestions provided below) and create a button for it.
+Implement the Background Color Change:
+Define a function that changes the window's background color to another color, it should toggle between two or more colors.
+Bind this function to the button.
+Implement the Display of Song or Poem Lines:
+Define a list containing lines of a song or poem.
+Create a function that displays the next line from the list each time the button is clicked.
+Bind this function to the button.
+Choose and Implement an Additional Action:
+Suggestions for Additional Actions:
+Display Current Date and Time: Create a function that retrieves and displays the current date and time and displays it in a message box when you click the button.
+Count Button Clicks: Create a function that counts the number of times a button is clicked and displays the count in a label.
+Toggle Text: Create a function that toggles the display text between two different messages each time the button is clicked.
+Implement the chosen action and bind it to the respective button.
+Run and Test the Application:
+Run the application and test each button to ensure they perform their intended actions correctly.
+Make any necessary adjustments or bug fixes.
+Upload Your Work:
+Save your Python script.
+Upload your completed assignment to your course directory on GitHub.
+Submit the GitHub link for review.
+Additional Tips
+Use comments in your code to explain what each part does.
+Test each button action individually before integrating them into the main application.
+Ensure your GUI is user-friendly and intuitive.
+Suggested Implementation of Additional Action: Toggle Text
+Define a function that switches between two text messages.
+Create a button that calls this function and displays the toggled text in a label.
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+ 
+
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+ 
+
+Glossary
+GUI
+Graphical User Interface, a type of user interface that allows users to interact with electronic devices using graphical icons and visual indicators.
+Event
+An action or occurrence recognized by software, such as a mouse click or key press.
+Binding
+The process of connecting an event to a function or method.
+Command Property
+A property of certain widgets (like buttons) that specifies the function to be called when the widget is interacted with.
+Event Object
+An object that contains information about an event, such as the type of event and the coordinates of a mouse click.
