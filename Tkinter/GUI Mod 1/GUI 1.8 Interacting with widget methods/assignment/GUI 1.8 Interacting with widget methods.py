@@ -6,18 +6,15 @@ root.title("Login🪵")
 root.geometry("800x700")
 root.configure(bg="teal")
 
-# --- State variables for toggling ---
-bg_toggle = True
-resize_toggle = True
-
 def change_bg_color():
     """Toggle background color automatically every 3 seconds"""
-    global bg_toggle
-    if bg_toggle:
+    if not hasattr(root, "bg_toggle"):
+        root.bg_toggle = False
+    if root.bg_toggle:
         root.configure(bg="plum")
     else:
         root.configure(bg="teal")
-    bg_toggle = not bg_toggle
+    root.bg_toggle = not root.bg_toggle
     root.after(3000, change_bg_color)
 
 def window_size():
@@ -40,19 +37,24 @@ def window_size():
 
 def resize_window():
     """Toggle window size back and forth on each click"""
-    global resize_toggle
-    if resize_toggle:
-        root.geometry("1000x500")
-    else:
+    if not hasattr(root, "resized"):
+        root.resized = False
+    if root.resized:
         root.geometry("800x700")
-    resize_toggle = not resize_toggle
+    else:
+        root.geometry("1000x500")
+    root.resized = not root.resized
 
 def change_goodbye_text():
-    goodbye_button.config(text="See you later!")
+    """Toggle Goodbye button text back and forth"""
+    if goodbye_button.cget("text") == "Goodbye!":
+        goodbye_button.config(text="See you later!")
+    else:
+        goodbye_button.config(text="Goodbye!")
 
 # --- Buttons and Labels ---
-# button_1 = tk.Button(root, text="Change Background", command=window_size)
-# button_1.pack()
+button_1 = tk.Button(root, text="Change Background", command=window_size)
+button_1.pack()
 
 # button_2 = tk.Button(root, text="Display Lyric", command=display_the_song)
 # button_2.pack()
