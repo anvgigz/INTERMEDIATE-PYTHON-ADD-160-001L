@@ -1,0 +1,171 @@
+Objective:
+At the end of this lesson, students will understand and use observable variables in Tkinter to manage dynamic data in their Python applications.
+
+Required Resources for this Assignment:
+GUI 1.9: Looking at variablesLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Introduction to Observable Variables in Tkinter
+In Tkinter, observable variables are special variables that can be monitored for changes. These variables are helpful when you want to update your application's interface dynamically based on changes in data.
+
+Types of Observable Variables
+There are four types of observable variables in Tkinter:
+
+BooleanVar - Holds a boolean value (True or False).
+DoubleVar - Holds a floating-point number.
+IntVar - Holds an integer value.
+StringVar - Holds a string value.
+Initializing the Main Window
+Before declaring observable variables, you must initialize the main window of your Tkinter application using the tk.Tk() method.
+
+
+import tkinter as tk
+
+# Initialize the main window
+root = tk.Tk()
+
+
+Declaring Observable Variables
+Let's declare an observable variable of each type and set their initial values.
+
+
+# Declare observable variables
+bool_var = tk.BooleanVar(value=True)  # BooleanVar holding True
+double_var = tk.DoubleVar(value=3.14)  # DoubleVar holding 3.14
+int_var = tk.IntVar(value=42)  # IntVar holding 42
+string_var = tk.StringVar(value="Hello, Tkinter!")  # StringVar holding a string
+
+# Print initial values
+print("BooleanVar initial value:", bool_var.get())
+print("DoubleVar initial value:", double_var.get())
+print("IntVar initial value:", int_var.get())
+print("StringVar initial value:", string_var.get())
+Retrieving Values from Observable Variables
+To retrieve the values stored in these observable variables, use the .get() method.
+
+ # Retrieve values
+bool_value = bool_var.get()
+double_value = double_var.get()
+int_value = int_var.get()
+string_value = string_var.get()
+
+# Print retrieved values
+print("Retrieved BooleanVar value:", bool_value)
+print("Retrieved DoubleVar value:", double_value)
+print("Retrieved IntVar value:", int_value)
+print("Retrieved StringVar value:", string_value)
+Adding and Triggering an Observer
+An observer is a function that gets called when the value of an observable variable changes. You can add an observer using the trace method.
+
+
+# Define an observer function
+def on_variable_change(*args):
+    print("Variable has changed!")
+
+# Add observers to variables
+bool_var.trace("w", on_variable_change)
+double_var.trace("w", on_variable_change)
+int_var.trace("w", on_variable_change)
+string_var.trace("w", on_variable_change)
+
+# Change variable values to trigger observers
+bool_var.set(False)
+double_var.set(2.71)
+int_var.set(84)
+string_var.set("Observable Variables in Tkinter")
+ 
+
+ 
+
+Assignment: Using Observable Variables in Tkinter
+Objective: At the end of this lesson, students will be able to understand and use observable variables in Tkinter to manage dynamic data in their Python applications. They will also learn how to create and use entry widgets.
+
+ 
+
+Step 1: Initializing the Main Window
+Before declaring observable variables, you must initialize the main window of your Tkinter application using the tk.Tk() method.
+
+
+import tkinter as tk
+
+# Initialize the main window
+root = tk.Tk()
+root.title("Greeting App")
+Estimated Time: 5 minutes
+
+Step 2: Declaring Observable Variables
+Next, let's declare observable variables for the user's name and age, and a message variable to hold the dynamic message.
+
+
+# Declare observable variables
+name_var = tk.StringVar()
+age_var = tk.StringVar()
+message_var = tk.StringVar()
+Estimated Time: 5 minutes
+
+Step 3: Creating Entry Widgets
+To get input from the user, we need to create entry widgets for the name and age. We'll also add labels to indicate what each entry is for.
+
+
+# Create the user interface
+tk.Label(root, text="Name:").grid(row=0, column=0)
+tk.Entry(root, textvariable=name_var).grid(row=0, column=1)
+
+tk.Label(root, text="Age:").grid(row=1, column=0)
+tk.Entry(root, textvariable=age_var).grid(row=1, column=1)
+Estimated Time: 10 minutes
+
+Step 4: Adding Observers
+Now we will add observers to the name and age variables. These observers will call a function to update the message whenever the user changes their input.
+
+
+# Define the function to update the message
+def update_message(*args):
+    name = name_var.get()
+    age = age_var.get()
+    
+    if name and age:
+        message_var.set(f"Hello, {name}! You are {age} years old.")
+    else:
+        message_var.set("")
+
+# Add observers
+name_var.trace("w", update_message)
+age_var.trace("w", update_message)
+Estimated Time: 10 minutes
+
+Step 5: Displaying the Dynamic Message
+Finally, we need to add a label to display the dynamic message that gets updated based on the user's input.
+
+
+# Create the label to display the message
+tk.Label(root, textvariable=message_var).grid(row=2, columnspan=2)
+
+# Start the Tkinter event loop
+root.mainloop()
+Estimated Time: 5 minutes
+
+
+Estimated Total Time: 35 minutes
+
+You can submit your assignment by uploading the finished code to your GitHub directory and sharing the link.
+
+How work will be evaluated:
+ 
+
+Can this assignment be retaken or fixed after the initial submission? Yes, students can correct and resubmit.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+Glossary:
+BooleanVar
+A Tkinter variable type that holds a boolean value.
+DoubleVar
+A Tkinter variable type that holds a floating-point number.
+IntVar
+A Tkinter variable type that holds an integer value.
+StringVar
+A Tkinter variable type that holds a string value.
+Observer
+A function that gets called when the value of an observable variable changes.
