@@ -1,0 +1,108 @@
+Objectives:
+Understand and use the after() method to schedule an event in Tkinter.
+Change the background color of a Tkinter window after a specified time.
+Add a button to a Tkinter window and use the destroy method to close the window.
+Set focus on a Tkinter button.
+Required Resources for this Assignment:
+GUI 1.8: Interacting with widget methodsLinks to an external site.
+
+Supplemental Resources for this Assignment (Optional Videos at LinkedIn Learning):
+Handling User EventsLinks to an external site.
+
+
+
+ 
+
+Interacting with Widget Methods in Tkinter
+In this lesson, we will learn how to interact with widget methods in Tkinter. Specifically, we will focus on event programming, using the after() method to change the background color of the window, and adding a button that uses the destroy method to close the window. We will also demonstrate how to set focus on the button.
+
+ 
+
+Event Programming with Widgets
+When we work with widgets in Tkinter, we often use event programming. Event programming allows us to respond to user actions, such as clicking a button or typing on the keyboard.
+
+The after() Method
+The after() method is used to schedule a function to be called after a specified amount of time. In the following example, we will change the background color of the window from white to black after 3 seconds.
+
+
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.geometry("400x400")  # Set the window size
+root.configure(bg="white")  # Set the initial background color to white
+
+# Function to change the background color to black
+def change_color():
+    root.configure(bg="black")
+
+# Schedule the change_color function to be called after 3000 milliseconds (3 seconds)
+root.after(3000, change_color)
+
+# Add a button that says "Goodbye!"
+goodbye_button = tk.Button(root, text="Goodbye!", command=root.destroy)
+goodbye_button.pack(pady=20)
+
+# Set focus on the goodbye button
+goodbye_button.focus_set()
+
+# Start the Tkinter event loop
+root.mainloop()
+Explanation
+In the above code:
+
+We import the tkinter module and create the main window.
+We set the initial background color of the window to white using root.configure(bg="white").
+We define a function change_color() that changes the background color to black using root.configure(bg="black").
+We use the root.after(3000, change_color) method to schedule the change_color function to be called after 3000 milliseconds (3 seconds).
+We add a button with the text "Goodbye!" and set its command to root.destroy, which will close the window when the button is clicked.
+We use goodbye_button.focus_set() to set focus on the "Goodbye!" button, so it is ready for user interaction.
+We start the Tkinter event loop with root.mainloop(), which keeps the window open and responsive to user actions.
+ 
+
+Assignment: Tkinter Widget Methods
+In this assignment, you will enhance your Tkinter application by modifying the background color change function, adding a new button to change the window size, and creating another button to change the text of the "Goodbye!" button.
+
+Assignment Tasks
+Modify Background Color and Time Interval:
+Change the function that modifies the background color to use a different color of your choice.
+Adjust the time interval for the background color change.
+Add Button to Change Window Size:
+Create an additional button in the Tkinter window.
+Program this button to change the size of the window when clicked.
+Create a Button to Change the Text of "Goodbye!" Button:
+Add a new button that, when clicked, changes the text of the "Goodbye!" button.
+Estimated Time
+Total estimated time: 45 minutes
+
+Submission Instructions
+Once you have completed the assignment, upload the modified Python file to your GitHub directory and submit the link.
+
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+ 
+
+Can this assignment be retaken or fixed after the initial submission? Yes, students can correct and resubmit.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+Glossary
+Event Programming
+A programming paradigm where the flow of the program is determined by events such as user actions, sensor outputs, or message passing.
+after()
+A Tkinter method used to schedule a function to be called after a specified amount of time.
+destroy
+A Tkinter method used to close a window.
+focus_set()
+A Tkinter method used to set the focus on a specific widget.
+ 
