@@ -1,0 +1,140 @@
+Objectives:
+Create a main window using Tkinter
+Customize the window title, icon, size, and limits
+Implement a close window button with protocol()
+Create and display message boxes with titles, messages, and icons
+Use dialog functions like askyesno, askokcancel, and askretrycancel
+ 
+
+Required Resources for this Assignment:
+GUI 2.4: Shaping the main window and conversing with the userLinks to an external site.
+
+ 
+
+Introduction to Tkinter Widgets for Brand New Programmers
+Welcome to your first lesson on using Tkinter widgets in Python! In this lesson, you will learn how to create and customize the main window of a Tkinter application. We will also cover how to create message boxes with titles, messages, and icons and how to use different dialog functions, such as askyesno, askokcancel, and askretrycancel.
+
+Objective
+At the end of this lesson, students will be able to:
+
+Create a main window using Tkinter
+Customize the window title, icon, size, and limits
+Implement a close window button with protocol()
+Create and display message boxes with titles, messages, and icons
+Use dialog functions like askyesno, askokcancel, and askretrycancel
+Creating the Main Window
+First, let's create the main window of our Tkinter application. Here's how you can do it:
+
+import tkinter as tk
+from tkinter import messagebox
+
+# Create the main window
+root = tk.Tk()
+
+# Set the window title
+root.title("My First Tkinter Window")
+
+# Set the window icon (icon must be a .ico file)
+root.iconbitmap('path_to_icon.ico')
+
+# Set the window size
+root.geometry("400x300")  # Width x Height
+
+# Set the minimum and maximum window size
+root.minsize(300, 200)  # Minimum width and height
+root.maxsize(600, 400)  # Maximum width and height
+
+# Define a function to handle window close
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
+
+# Bind the close window protocol
+root.protocol("WM_DELETE_WINDOW", on_closing)
+
+# Run the application
+root.mainloop()
+Creating Message Boxes
+Next, we'll create different types of message boxes. Tkinter provides several functions for this:
+
+# Show an error message box
+messagebox.showerror("Error", "An error has occurred!")
+
+# Show a warning message box
+messagebox.showwarning("Warning", "This is a warning message!")
+
+# Show an informational message box
+messagebox.showinfo("Information", "This is an information message!")
+Using Dialog Functions
+Finally, let's look at how to use dialog functions to get user responses. These functions display a dialog box and return a value based on the user's choice:
+
+# Ask a yes/no question
+response = messagebox.askyesno("Question", "Do you want to proceed?")
+if response:
+    print("User chose Yes")
+else:
+    print("User chose No")
+
+# Ask an ok/cancel question
+response = messagebox.askokcancel("Confirmation", "Do you want to continue?")
+if response:
+    print("User chose OK")
+else:
+    print("User chose Cancel")
+
+# Ask a retry/cancel question
+response = messagebox.askretrycancel("Retry", "Do you want to retry?")
+if response:
+    print("User chose Retry")
+else:
+    print("User chose Cancel")
+ 
+
+Assignment: Combining Tkinter Features in a Single Application
+In this assignment, you will combine all the features you've learned so far about Tkinter into a single application. You will create a customized main window, display various message boxes, and use dialog functions to interact with the user. Follow the high-level directions below to complete the assignment.
+
+Assignment Directions
+Create the Main Window:
+Initialize the main window using Tkinter.
+Set a custom title and icon for the window.
+Specify the window size and set minimum and maximum size limits.
+Implement a close window button that asks for confirmation before closing the window.
+Display Message Boxes:
+Show an error message box with a custom title and message.
+Show a warning message box with a custom title and message.
+Show an informational message box with a custom title and message.
+Use Dialog Functions:
+Implement the askyesno function to ask the user a yes/no question and handle the response.
+Implement the askokcancel function to ask the user an ok/cancel question and handle the response.
+Implement the askretrycancel function to ask the user a retry/cancel question and handle the response.
+Combine Features:
+Ensure all the above features are integrated into a single Tkinter application.
+Test the application to ensure it works as expected.
+Submission Instructions
+Upload the finished assignment to your directory for the course on GitHub and hand in the link.
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+ 
+
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+Glossary
+Tkinter
+A standard GUI (Graphical User Interface) library for Python that allows you to create desktop applications.
+root
+The main window of a Tkinter application.
+messagebox
+A module in Tkinter that provides functions to display message boxes.
+protocol()
+A method to intercept window manager close button (the X button).

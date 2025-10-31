@@ -1,0 +1,161 @@
+Objectives:
+At the end of this lesson, students will be able to:
+
+Create a canvas in Tkinter with specified dimensions and background color
+Draw lines, rectangles, polygons, circles, arcs, and add text on the canvas
+Load and display images on the canvas
+Required Resources for this Assignment:
+GUI 2.5: Working with the CanvasLinks to an external site.
+
+Introduction to Tkinter Canvas for Brand New Programmers
+Welcome to your introduction to the Tkinter Canvas widget! In this lesson, you will learn how to create and manipulate a canvas in Python using Tkinter. The Canvas widget is a versatile and powerful tool for creating graphics and drawing shapes in your GUI applications.
+
+ 
+
+Creating a Canvas
+To create a canvas, you need to import Tkinter and set up the main window. Then, you can create a canvas with a specified width, height, background color, and border width.
+
+
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Tkinter Canvas Example")
+
+# Create a canvas with specified dimensions, background color, and border width
+canvas = tk.Canvas(root, width=400, height=300, bg='lightblue', borderwidth=2)
+canvas.pack()
+
+# Start the Tkinter event loop
+root.mainloop()
+Drawing Lines
+You can draw lines on the canvas using the create_line() method. You can also add arrowheads to the lines.
+
+
+# Draw a simple line
+canvas.create_line(50, 50, 150, 50)
+
+# Draw a line with arrowheads
+canvas.create_line(50, 100, 150, 100, arrow=tk.LAST)
+Drawing Rectangles
+To draw rectangles, use the create_rectangle() method. You can specify the outline color, fill color, and border width.
+
+
+# Draw a rectangle with an outline
+canvas.create_rectangle(200, 50, 300, 150, outline='black')
+
+# Draw a filled rectangle
+canvas.create_rectangle(200, 200, 300, 250, outline='black', fill='red', width=2)
+Drawing Polygons
+You can draw polygons with any number of sides using the create_polygon() method.
+
+
+# Draw a triangle (3-sided polygon)
+canvas.create_polygon(50, 200, 150, 200, 100, 250, outline='black', fill='green', width=2)
+Drawing Circles
+Circles are drawn using the create_oval() method. You specify the bounding box for the circle.
+
+
+# Draw a circle
+canvas.create_oval(50, 300, 150, 400, outline='black', fill='yellow', width=2)
+Drawing Arcs
+Arcs can be drawn using the create_arc() method, specifying the start and extent angles.
+
+
+# Draw an arc
+canvas.create_arc(200, 300, 300, 400, start=0, extent=150, outline='blue', fill='purple', width=2)
+Adding Text
+You can add text to the canvas using the create_text() method.
+
+
+# Add text to the canvas
+canvas.create_text(200, 50, text="Hello, Tkinter!", font=('Arial', 20), fill='black')
+Creating an Image
+To load and display an image on the canvas, use the PhotoImage class and the create_image() method.
+
+
+# Load an image and display it on the canvas
+image = tk.PhotoImage(file='path_to_image.png')
+canvas.create_image(200, 150, image=image)
+ 
+
+ 
+
+ 
+
+Assignment
+For this assignment, you will create a canvas, set a background color, and draw a simple image like a Christmas tree with ornaments. Add text to the canvas as well.
+
+Instructions
+Create a Tkinter canvas with a specified width, height, and background color.
+Draw a Christmas tree (a triangle with a rectangle for the trunk).
+Add circles to represent ornaments on the tree.
+Add a text message, such as "Happy Holidays!"
+Example Code
+
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("Christmas Tree Canvas")
+
+# Create a canvas with specified dimensions and background color
+canvas = tk.Canvas(root, width=400, height=400, bg='white', borderwidth=2)
+canvas.pack()
+
+# Draw the tree (triangle)
+canvas.create_polygon(200, 50, 250, 150, 150, 150, outline='green', fill='green', width=2)
+canvas.create_polygon(175, 100, 225, 200, 125, 200, outline='green', fill='green', width=2)
+canvas.create_polygon(150, 150, 250, 300, 100, 300, outline='green', fill='green', width=2)
+
+# Draw the trunk (rectangle)
+canvas.create_rectangle(175, 300, 225, 350, outline='brown', fill='brown', width=2)
+
+# Draw ornaments (circles)
+canvas.create_oval(180, 120, 190, 130, outline='red', fill='red', width=2)
+canvas.create_oval(210, 160, 220, 170, outline='blue', fill='blue', width=2)
+canvas.create_oval(150, 180, 160, 190, outline='yellow', fill='yellow', width=2)
+
+# Add text
+canvas.create_text(200, 380, text="Happy Holidays!", font=('Arial', 20), fill='black')
+
+# Start the Tkinter event loop
+root.mainloop()
+Submission Instructions
+Once you have completed the assignment, upload your Python file to your course directory on GitHub and submit the link to your instructor.
+
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+Glossary
+Canvas
+A widget in Tkinter used for drawing shapes, text, and images.
+create_line()
+A method to draw lines on the canvas.
+create_rectangle()
+A method to draw rectangles on the canvas.
+create_polygon()
+A method to draw polygons on the canvas.
+create_oval()
+A method to draw ovals and circles on the canvas.
+create_arc()
+A method to draw arcs on the canvas.
+create_text()
+A method to add text to the canvas.
+PhotoImage
+A class in Tkinter used to load and display images.

@@ -1,0 +1,153 @@
+Objective:
+Required Resources for this Assignment:
+GUI 2.3: A small lexicon of widgets - Part 3Links to an external site.
+
+Python GUI Programming: A Small Lexicon of Widgets – Part 3
+Objective: At the end of this lesson, students will understand and be able to use various properties and methods of the Entry widget in Tkinter. They will also learn how to create and manage menus for a simple coffee shop application, including adding menu items, checkboxes, and hotkeys.
+
+Entry Widget Properties
+The Entry widget in Tkinter is used to accept single-line text input from the user. Let's explore some important properties:
+
+command: This property is used to execute a function when a certain event occurs.
+show: This property is used to display the entered text as a specific character, commonly used for password fields. For example, show='*' will display each entered character as an asterisk.
+state: This property defines the state of the Entry widget. It can be 'normal' (editable), 'readonly' (non-editable), or 'disabled' (grayed out).
+width: This property sets the width of the Entry widget in characters.
+textvariable: This property is used to link a Tkinter variable (usually a StringVar) to the Entry widget.
+Entry Widget Methods
+Let's discuss some common methods associated with the Entry widget:
+
+get(): This method retrieves the current text in the Entry widget.
+set(): This method sets the text in the Entry widget to a specified value.
+delete(): This method deletes a specified range of text in the Entry widget.
+Example Code:
+
+import tkinter as tk
+from tkinter import messagebox
+
+# Create the main application window
+root = tk.Tk()
+root.title("Coffee Shop Menu")
+
+# Step 1: Create the Menu Bar
+menu_bar = tk.Menu(root)
+root.config(menu=menu_bar)
+
+# Variables to store order details
+num_coffees = tk.IntVar(value=0)
+num_cream = tk.IntVar(value=0)
+num_sugar = tk.IntVar(value=0)
+num_teas = tk.IntVar(value=0)
+num_lemon = tk.IntVar(value=0)
+num_honey = tk.IntVar(value=0)
+num_donuts = tk.IntVar(value=0)
+num_bagels = tk.IntVar(value=0)
+
+# Step 2: Create Menus
+def show_drinks():
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Frame):
+            widget.destroy()
+    drinks_frame = tk.Frame(root)
+    drinks_frame.pack(padx=10, pady=10)
+
+    tk.Label(drinks_frame, text="Number of Coffees:").grid(row=0, column=0, padx=10, pady=5)
+    tk.OptionMenu(drinks_frame, num_coffees, *range(11)).grid(row=0, column=1, padx=10, pady=5)
+
+    tk.Label(drinks_frame, text="Number of Cream:").grid(row=1, column=0, padx=10, pady=5)
+    tk.OptionMenu(drinks_frame, num_cream, *range(11)).grid(row=1, column=1, padx=10, pady=5)
+
+    tk.Label(drinks_frame, text="Number of Sugar:").grid(row=2, column=0, padx=10, pady=5)
+    tk.OptionMenu(drinks_frame, num_sugar, *range(11)).grid(row=2, column=1, padx=10, pady=5)
+
+    tk.Label(drinks_frame, text="Number of Teas:").grid(row=3, column=0, padx=10, pady=5)
+    tk.OptionMenu(drinks_frame, num_teas, *range(11)).grid(row=3, column=1, padx=10, pady=5)
+
+    tk.Label(drinks_frame, text="Number of Lemon:").grid(row=4, column=0, padx=10, pady=5)
+    tk.OptionMenu(drinks_frame, num_lemon, *range(11)).grid(row=4, column=1, padx=10, pady=5)
+
+    tk.Label(drinks_frame, text="Number of Honey:").grid(row=5, column=0, padx=10, pady=5)
+    tk.OptionMenu(drinks_frame, num_honey, *range(11)).grid(row=5, column=1, padx=10, pady=5)
+
+def show_donuts():
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Frame):
+            widget.destroy()
+    donuts_frame = tk.Frame(root)
+    donuts_frame.pack(padx=10, pady=10)
+    # Students will complete this section
+    tk.Label(donuts_frame, text="Number of Donuts:").grid(row=0, column=0, padx=10, pady=5)
+    tk.OptionMenu(donuts_frame, num_donuts, *range(11)).grid(row=0, column=1, padx=10, pady=5)
+
+def show_bagels():
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Frame):
+            widget.destroy()
+    bagels_frame = tk.Frame(root)
+    bagels_frame.pack(padx=10, pady=10)
+    # Students will complete this section
+    tk.Label(bagels_frame, text="Number of Bagels:").grid(row=0, column=0, padx=10, pady=5)
+    tk.OptionMenu(bagels_frame, num_bagels, *range(11)).grid(row=0, column=1, padx=10, pady=5)
+
+# Create Menus and add to Menu Bar
+drinks_menu = tk.Menu(menu_bar, tearoff=0)
+donuts_menu = tk.Menu(menu_bar, tearoff=0)
+bagels_menu = tk.Menu(menu_bar, tearoff=0)
+
+menu_bar.add_cascade(label="Drinks", menu=drinks_menu)
+menu_bar.add_cascade(label="Donuts", menu=donuts_menu)
+menu_bar.add_cascade(label="Bagels", menu=bagels_menu)
+
+# Add menu items and assign commands to the menus
+drinks_menu.add_command(label="Show Drinks", command=show_drinks)
+donuts_menu.add_command(label="Show Donuts", command=show_donuts)
+bagels_menu.add_command(label="Show Bagels", command=show_bagels)
+
+# Function to display the order summary
+def show_order():
+    total_cost = num_coffees.get() * 2 + num_teas.get() * 2 + num_donuts.get() * 1 + num_bagels.get() * 1
+    order = (f"Coffees: {num_coffees.get()}, Cream: {num_cream.get()}, Sugar: {num_sugar.get()}\n"
+             f"Teas: {num_teas.get()}, Lemon: {num_lemon.get()}, Honey: {num_honey.get()}\n"
+             f"Donuts: {num_donuts.get()}\n"
+             f"Bagels: {num_bagels.get()}\n"
+             f"Total Cost: ${total_cost}")
+    messagebox.showinfo("Order Summary", order)
+
+# Create a Button to complete the order
+complete_order_button = tk.Button(root, text="Complete Order", command=show_order)
+complete_order_button.pack(pady=10)
+
+# Run the application
+root.mainloop()
+Step-by-Step Directions
+Follow these steps to create the coffee shop menu application:
+
+Create the main application window and set its title using root = tk.Tk() and root.title("Coffee Shop Menu").
+Create the menu bar with menu_bar = tk.Menu(root) and configure the root window to use this menu bar with root.config(menu=menu_bar).
+Create three menus for drinks, donuts, and bagels using tk.Menu(menu_bar, tearoff=0).
+Add the menus to the menu bar using menu_bar.add_cascade(label="MenuName", menu=menu_name) and add commands inside the menus using menu_name.add_command(label="Show Menu", command=show_function).
+Define functions show_drinks(), show_donuts(), and show_bagels() to display the corresponding menu pages. Each function should:
+Destroy any existing frames in the window using for widget in root.winfo_children(): if isinstance(widget, tk.Frame): widget.destroy().
+Create a new frame using frame_name = tk.Frame(root) and pack it using frame_name.pack(padx=10, pady=10).
+Add labels and dropdowns for the number of items using tk.Label(frame_name, text="LabelText").grid(row=row, column
+Assignment: Finish the interface
+Directions:
+Implement Menus: Complete the donuts and bagels pages with a few choices each. This should take about 30 minutes. 
+Add Prices: Modify the code to include prices for the donuts and bagels. Calculate the total order price and display it in the order summary. This should take about 45 minutes.
+Upload the finished assignment to your GitHub directory and submit the link.
+
+ 
+
+ 
+
+How work will be evaluated:
+
+
+ 
+
+ 
+
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+

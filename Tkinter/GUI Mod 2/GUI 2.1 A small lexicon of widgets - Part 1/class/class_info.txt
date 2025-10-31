@@ -1,0 +1,131 @@
+Objectives:
+At the end of this lesson, students will be able to:
+
+Create a window using Tkinter
+Use frames for organizing widgets
+Implement data entry fields, labels, checkboxes, and buttons
+Use a grid layout for arranging widgets
+Display information using a message box
+Create a button to quit the application
+Required Resources for this Assignment:
+GUI 2.1 A small lexicon of widgets - Part 1Links to an external site.
+
+ 
+
+Using Widgets in Tkinter for Python
+Welcome to your first lesson on using Tkinter to create graphical user interfaces (GUIs) in Python. Tkinter is a powerful library that allows you to create windows, frames, labels, buttons, and other GUI elements. By the end of this lesson, you will be able to make a basic window with data entry fields, labels, checkboxes, and buttons.
+
+Step-by-Step Guide
+1. Importing Tkinter
+First, we need to import the Tkinter library. Add this line at the top of your Python file:
+
+import tkinter as tk
+from tkinter import messagebox
+2. Creating the Main Window
+Next, we create the main window for our application:
+
+# Create the main window
+root = tk.Tk()
+root.title("Data Entry Form")
+3. Using Frames for Organization
+We use frames to organize our widgets into sections. Let's create two frames: one for data entry and one for buttons.
+
+# Create frames
+frame_entry = tk.Frame(root)
+frame_buttons = tk.Frame(root)
+
+# Place the frames in the window using grid layout
+frame_entry.grid(row=0, column=0, padx=10, pady=10)
+frame_buttons.grid(row=1, column=0, padx=10, pady=10)
+4. Adding Entry Fields and Labels
+Let's add entry fields for the name, email, and phone number with corresponding labels.
+
+# Name entry
+label_name = tk.Label(frame_entry, text="Name:")
+entry_name = tk.Entry(frame_entry)
+
+label_name.grid(row=0, column=0, sticky='w')
+entry_name.grid(row=0, column=1)
+
+# Email entry
+label_email = tk.Label(frame_entry, text="Email:")
+entry_email = tk.Entry(frame_entry)
+
+label_email.grid(row=1, column=0, sticky='w')
+entry_email.grid(row=1, column=1)
+
+# Phone entry
+label_phone = tk.Label(frame_entry, text="Phone:")
+entry_phone = tk.Entry(frame_entry)
+
+label_phone.grid(row=2, column=0, sticky='w')
+entry_phone.grid(row=2, column=1)
+5. Adding Checkboxes
+We can add checkboxes for selecting home or mobile phone type:
+
+# Phone type checkboxes
+label_phone_type = tk.Label(frame_entry, text="Phone Type:")
+phone_type_var = tk.StringVar()
+checkbox_home = tk.Checkbutton(frame_entry, text="Home", variable=phone_type_var, onvalue='Home')
+checkbox_mobile = tk.Checkbutton(frame_entry, text="Mobile", variable=phone_type_var, onvalue='Mobile')
+
+label_phone_type.grid(row=3, column=0, sticky='w')
+checkbox_home.grid(row=3, column=1, sticky='w')
+checkbox_mobile.grid(row=3, column=2, sticky='w')
+6. Adding Buttons
+Now we add buttons: one to display the entered information in a message box, and another to quit the application.
+
+# Function to display the entered information
+def display_info():
+    name = entry_name.get()
+    email = entry_email.get()
+    phone = entry_phone.get()
+    phone_type = phone_type_var.get()
+    messagebox.showinfo("Information", f"Name: {name}\nEmail: {email}\nPhone: {phone} ({phone_type})")
+
+# Add buttons
+button_display = tk.Button(frame_buttons, text="Display Information", command=display_info)
+button_quit = tk.Button(frame_buttons, text="Quit", command=root.destroy)
+
+button_display.grid(row=0, column=0, padx=5, pady=5)
+button_quit.grid(row=0, column=1, padx=5, pady=5)
+7. Running the Application
+Finally, we run the main loop to display the window and handle user interactions:
+
+# Run the application
+root.mainloop()
+Assignment
+For your assignment, create a Tkinter application with a similar structure but add an additional field for "Address". Once completed, upload the finished assignment to your course directory on GitHub and submit the link.
+
+How work will be evaluated:
+
+Estimate of how long the assignment will take: 60 minutes
+Can this assignment be retaken or fixed after the initial submission? Yes, students can submit up to two times.
+What will students hand in: A link to the code on GitHub
+Feedback: Students will receive feedback on their submissions to help them understand any mistakes in the gradebook.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Glossary
+Tkinter
+A standard GUI library in Python used to create graphical user interfaces.
+Frame
+A container widget in Tkinter used to group and organize other widgets.
+Entry
+A widget in Tkinter used to accept a single line of text input from the user.
+Label
+A widget in Tkinter used to display text or images.
+Button
+A widget in Tkinter used to perform an action when clicked.
+Messagebox
+A Tkinter module used to display message boxes for information, warnings, or errors.
+Grid
+A layout manager in Tkinter used to arrange widgets in a table-like structure.
+ 
